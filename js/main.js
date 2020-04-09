@@ -11,8 +11,8 @@
 	Preloder
 --------------------*/
 function loader() {
-	$(window).on('load', function() { 
-		$(".loader").fadeOut(); 
+	$(window).on('load', function () {
+		$(".loader").fadeOut();
 		$("#preloder").delay(400).fadeOut("slow");
 	});
 }
@@ -24,7 +24,7 @@ function loader() {
 --------------------*/
 function responsive() {
 	// Responsive 
-	$('.responsive').on('click', function(event) {
+	$('.responsive').on('click', function (event) {
 		$('.menu-list').slideToggle(400);
 		event.preventDefault();
 	});
@@ -37,12 +37,12 @@ function responsive() {
 --------------------*/
 function heroSection() {
 	//Slide item bg image.
-	$('.hero-item').each(function() {
+	$('.hero-item').each(function () {
 		var image = $(this).data('bg');
 		$(this).css({
-			'background-image'  : 'url(' + image + ')',
-			'background-size'   : 'cover',
-			'background-repeat' : 'no-repeat',
+			'background-image': 'url(' + image + ')',
+			'background-size': 'cover',
+			'background-repeat': 'no-repeat',
 			'background-position': 'center bottom'
 		});
 	});
@@ -57,9 +57,9 @@ function heroSection() {
 
 	var time = 7;
 	var $progressBar,
-		$bar, 
-		$elem, 
-		isPause, 
+		$bar,
+		$elem,
+		isPause,
 		tick,
 		percentTime;
 
@@ -68,7 +68,7 @@ function heroSection() {
 		loop: true,
 		nav: true,
 		items: 1,
-		autoHeight:true,
+		autoHeight: true,
 		animateOut: 'fadeOut',
 		animateIn: 'fadeIn',
 		navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
@@ -78,7 +78,7 @@ function heroSection() {
 	});
 
 	// Init progressBar where elem is $("#owl-demo")
-	function progressBar(){    
+	function progressBar() {
 		// build progress bar elements
 		buildProgressBar();
 
@@ -87,12 +87,12 @@ function heroSection() {
 	}
 
 	// create div#progressBar and div#bar then prepend to $("#owl-demo")
-	function buildProgressBar(){
-		$progressBar = $("<div>",{
-			id:"progressBar"
+	function buildProgressBar() {
+		$progressBar = $("<div>", {
+			id: "progressBar"
 		});
-		$bar = $("<div>",{
-			id:"bar"
+		$bar = $("<div>", {
+			id: "bar"
 		});
 		$progressBar.append($bar).prependTo($("#hero-slider"));
 	}
@@ -106,15 +106,15 @@ function heroSection() {
 	};
 
 	function interval() {
-		if(isPause === false){
+		if (isPause === false) {
 			percentTime += 1 / time;
 
 			$bar.css({
-				width: percentTime+"%"
+				width: percentTime + "%"
 			});
 
 			// if percentTime is equal or greater than 100
-			if(percentTime >= 100){
+			if (percentTime >= 100) {
 				// slide to next item 
 				$("#hero-slider").trigger("next.owl.carousel");
 				percentTime = 0; // give the carousel at least the animation time ;)
@@ -123,12 +123,12 @@ function heroSection() {
 	}
 
 	// pause while dragging 
-	function pauseOnDragging(){
+	function pauseOnDragging() {
 		isPause = true;
 	}
 
 	// moved callback
-	function moved(){
+	function moved() {
 		// clear interval
 		clearTimeout(tick);
 		// start again
@@ -145,7 +145,7 @@ function heroSection() {
 function videoPopup() {
 	$('.video-popup').magnificPopup({
 		type: 'iframe',
-		autoplay : true
+		autoplay: true
 	});
 }
 
@@ -157,23 +157,23 @@ function videoPopup() {
 function testimonial() {
 	// testimonial Carousel 
 	$('#testimonial-slide').owlCarousel({
-		loop:true,
-		autoplay:true,
-		margin:30,
-		nav:false,
+		loop: true,
+		autoplay: true,
+		margin: 30,
+		nav: false,
 		dots: true,
-		responsive:{
-			0:{
-				items:1
+		responsive: {
+			0: {
+				items: 1
 			},
-			600:{
-				items:2
+			600: {
+				items: 2
 			},
-			800:{
-				items:2
+			800: {
+				items: 2
 			},
-			1000:{
-				items:2
+			1000: {
+				items: 2
 			}
 		}
 	});
@@ -186,7 +186,7 @@ function testimonial() {
 --------------------*/
 function progressbar() {
 
-	$('.progress-bar-style').each(function() {
+	$('.progress-bar-style').each(function () {
 		var progress = $(this).data("progress");
 		var prog_width = progress + '%';
 		if (progress <= 100) {
@@ -255,7 +255,30 @@ function progressCircle() {
 
 }
 
-(function($) {
+$(document).ready(function () {
+	$('.customer-logos').slick({
+		slidesToShow: 4,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 1500,
+		arrows: false,
+		dots: false,
+		pauseOnHover: false,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 4
+			}
+		}, {
+			breakpoint: 520,
+			settings: {
+				slidesToShow: 3
+			}
+		}]
+	});
+});
+
+(function ($) {
 	// Call all functions
 	loader();
 	responsive();
