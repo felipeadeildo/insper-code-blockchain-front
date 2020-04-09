@@ -121,10 +121,10 @@ ul {
 }
 
 .section-title h2 span {
-	background: #2be6ab;
+	background: #f68b23;
 	padding: 0 3px 5px;
 	display: inline-block;
-	color: #0b1033;
+	color: #ffffff;
 }
 
 .section-title:after {
@@ -135,7 +135,7 @@ ul {
 	width: 5px;
 	height: 30px;
 	margin-left: -2.5px;
-	background: #2be6ab;
+	background: #f68b23;
 }
 
 .section-title.left {
@@ -158,10 +158,10 @@ ul {
 .site-btn {
 	font-family: "Oswald", sans-serif;
 	font-size: 15px;
-	color: #641fb1;
+	color: #ffffff;
 	display: inline-block;
 	text-transform: uppercase;
-	background: #2be6ab;
+	background: #f68b23;
 	padding: 15px 50px;
 	font-weight: 500;
 	letter-spacing: 1px;
@@ -171,15 +171,15 @@ ul {
 }
 
 .site-btn.btn-2 {
-	background: #6a23b5;
-	color: #fff;
+	background: #f68b23;
+	color: #ffffff;
 	font-weight: 400;
 }
 
 .site-btn.btn-3 {
 	background: transparent;
-	color: #6a23b5;
-	border: 1px solid #6a23b5;
+	color: #f68b23;
+	border: 1px solid #f68b23;
 	padding: 14px 50px;
 }
 
@@ -267,7 +267,10 @@ ul {
 .header-section .logo {
 	display: inline-block;
 	float: left;
-	padding-top: 30px;
+	padding-top: 20px;
+	max-width: 15%;
+	height: auto;
+	padding-bottom: 1px;
 }
 
 .header-section .logo img {
@@ -302,7 +305,7 @@ ul {
 
 .header-section .menu-list li a:hover,
 .header-section .menu-list li a.active {
-	color: #6a23b5;
+	color: #f68b23;
 }
 
 .header-section .menu-list li:last-child a {
@@ -310,8 +313,8 @@ ul {
 }
 
 .header-section .menu-list li.active a {
-	background: #2be6ab;
-	color: #6a23b5;
+	background: #f68b23;
+	color: #ffffff;
 }
 
 .header-section .menu-list .current a:after {
@@ -370,7 +373,7 @@ ul {
 
 .owl-carousel .owl-nav .owl-prev:hover,
 .owl-carousel .owl-nav .owl-next:hover {
-	background: #2be6ab;
+	background: #f68b23;
 }
 
 .owl-carousel .owl-nav .owl-next {
@@ -381,7 +384,7 @@ ul {
 	width: 0%;
 	max-width: 100%;
 	height: 4px;
-	background: #2be6ab;
+	background: #f68b23;
 }
 
 .owl-carousel #progressBar {
@@ -426,7 +429,7 @@ ul {
 	margin-top: -50px;
 	padding: 50px 25px;
 	text-align: center;
-	background: #f5faf8;
+	background: #f68b23;
 	-webkit-box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
 	        box-shadow: 0 0 8px rgba(74, 74, 74, 0.1);
 	-webkit-transition: all 0.4s ease 0s;
@@ -461,13 +464,13 @@ ul {
 }
 
 .lab-card:hover {
-	background: #2be6ab;
+	background: #f68b23;
 }
 
 .lab-card:hover h2,
 .lab-card:hover p,
 .lab-card:hover .icon {
-	color: #fff;
+	color: #f68b23;
 }
 
 /* About contant */
@@ -477,7 +480,7 @@ ul {
 }
 
 .about-contant p {
-	color: #fff;
+	color: #f68b23;
 }
 
 .intro-video {
@@ -762,7 +765,7 @@ ul {
 	height: 100%;
 	right: -15px;
 	top: 0;
-	background: #6a23b5;
+	background: #f68b23;
 	z-index: -1;
 }
 
@@ -841,12 +844,12 @@ ul {
 	Footer section
 --------------------------*/
 .footer-section {
-	background: #220c3b;
+	background: #000000;
 	text-align: center;
 }
 
 .footer-section h2 {
-	color: #6a23b5;
+	color: #ffffff;
 	font-size: 14px;
 	padding: 18px 0;
 }
@@ -861,7 +864,7 @@ ul {
 .page-top-section {
 	position: relative;
 	height: 405px;
-	background: #6a23b5;
+	background: #f68b23;
 }
 
 .page-top-section .container {
@@ -902,7 +905,7 @@ ul {
 .page-top-section .page-info .page-links span {
 	margin-right: 0;
 	padding-right: 0;
-	color: #2be6ab;
+	color: #524949;
 }
 
 .page-top-section .page-info .page-links span:after {
@@ -981,7 +984,7 @@ ul {
 	Newsletter Section
 --------------------------*/
 .newsletter-section {
-	background: #2be6ab;
+	background: #000000;
 }
 
 .newsletter-section h2 {
@@ -1003,8 +1006,8 @@ ul {
 	float: left;
 	margin-right: 30px;
 	width: calc(100% - 211px);
-	background: #19cc93;
-	color: #fff;
+	background: #ffffff;
+	color: #f68b23;
 }
 
 .nl-form input[type="text"]:focus,
@@ -1025,7 +1028,7 @@ ul {
 }
 
 .nl-form ::placeholder {
-	color: #fff;
+	color: #000000;
 }
 
 .nl-form :-ms-input-placeholder {
