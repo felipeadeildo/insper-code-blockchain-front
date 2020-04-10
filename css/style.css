@@ -1310,8 +1310,9 @@ ul {
 }
 
 /* Contact page Map */
-.map {
-	height: 750px;
+.map iframe{
+	width: 100%;
+	height: 100rem;
 }
 
 
