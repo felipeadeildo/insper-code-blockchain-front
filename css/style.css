@@ -66,7 +66,7 @@ ul {
 }
 
 .pb100 {
-	padding-bottom: 100px;
+	padding-bottom: 80px;
 }
 
 .mt100 {
@@ -78,7 +78,7 @@ ul {
 }
 
 .mt60 {
-	margin-top: 70px;
+	margin-top: 35px;
 }
 
 .mr20 {
@@ -109,7 +109,7 @@ ul {
 
 .section-title {
 	text-align: center;
-	margin-bottom: 90px;
+	margin-bottom: 45px;
 	padding-top: 50px;
 	position: relative;
 }
@@ -463,7 +463,7 @@ ul {
 	transition: all 0.4s ease 0s;
 }
 
-.lab-card:hover {
+/* .lab-card:hover {
 	background: #f68b23;
 }
 
@@ -471,7 +471,7 @@ ul {
 .lab-card:hover p,
 .lab-card:hover .icon {
 	color: #f68b23;
-}
+} */
 
 /* About contant */
 .about-contant {
@@ -480,7 +480,8 @@ ul {
 }
 
 .about-contant p {
-	color: #f68b23;
+	color: #fff;
+	text-align: justify;
 }
 
 .intro-video {
@@ -541,9 +542,10 @@ ul {
 
 .testimonial p {
 	font-style: italic;
+	/* text-align: justify; */
 	color: #fff;
 	font-weight: 400;
-	line-height: 36px;
+	line-height: 26px;
 }
 
 .testimonial .avatar {
@@ -1043,6 +1045,93 @@ ul {
 /*------------------------
 	Blog Page
 --------------------------*/
+.blog {
+	margin: 3rem 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+  }
+  .blog__header {
+	text-align: center;
+  }
+  .blog__header1 {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 300;
+	letter-spacing: 0.2px;
+	text-transform: uppercase;
+  }
+  .blog__header2 {
+	margin-top: 0.3rem;
+	font-size: 1.4rem;
+	font-weight: 500;
+  }
+  .blog__header2Span {
+	font-weight: 400;
+	font-size: 1.25rem;
+  }
+  .blog__slider {
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+  }
+  .blog__post {
+	margin: 3rem 1rem;
+	width: 25%;
+	-webkit-box-shadow: 9px 9px 20px 0px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 9px 9px 20px 0px rgba(0, 0, 0, 0.4);
+	box-shadow: 9px 9px 20px 0px rgba(0, 0, 0, 0.4);
+  }
+  .blog__topImg {
+	max-width: 100%;
+  }
+  .blog__content {
+	padding: 0.8rem;
+  }
+  .blog__preview {
+	font-size: 0.95rem;
+	font-weight: 300;
+  }
+  .blog__title {
+	margin-top: 0;
+	font-size: 1.4rem;
+  }
+  .blog__intro {
+	line-height: 1.5;
+  }
+  .blog__info {
+	font-weight: 300;
+  }
+  .blog__author {
+	font-size: 0.9rem;
+  }
+  .blog__date {
+	font-size: 0.85rem;
+  }
+  .blog__counter {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+  }
+  .blog__counterItem {
+	height: 20px;
+	width: 20px;
+	margin: 0.5rem;
+	background-color: lightgray;
+	border: 1px solid lightgray;
+	border-radius: 25px;
+  }
+  .blog__counterItem:hover {
+	cursor: pointer;
+  }
+  .blog__counterItem-active {
+	border: 1px solid lightblue;
+	background-color: lightblue;
+  }
+
 .post-item {
 	margin-bottom: 90px;
 }
