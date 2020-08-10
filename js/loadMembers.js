@@ -1,55 +1,58 @@
-function gitMembers(json, members) {
+function gitMembers(json, members, exec) {
 
     return new Promise(
         function (resolve, reject) {
 
+            if (exec == undefined) {
+
+                $.get("https://api.github.com/orgs/BlockchainInsper/public_members", function (data) {
+
+                    for (let index = 0; index < data.length; index++) {
+
+                        let { login, avatar_url } = data[index]
+                        position = "Tech Member"
+
+                        if (json[login] == undefined) {
+
+                            let template = `<div id="${login}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${avatar_url}" alt="${obj.name}">
+                                                    <h2 id="name">${login}</h2>
+                                                    <h3 id="position">${position}</h3>
+                                                </div>
+                                            </div>`
+                        } else {
+                            json[login].seen = true
+                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${obj.img}" alt="${obj.name}">
+                                                    <h2 id="name">${obj.name}</h2>
+                                                    <h3 id="position">${obj.position}</h3>
+                                                </div>
+                                            </div>`
+                        }
 
 
-            $.get("https://api.github.com/orgs/BlockchainInsper/public_members", function (data) {
 
-                for (let index = 0; index < data.length; index++) {
 
-                    let { login, avatar_url } = data[index]
-                    position = "Tech Member"
 
-                    if (json[login] == undefined) {
+                        let user = document.createElement("div");
+                        user.innerHTML = template
+                        members.appendChild(user.firstChild)
 
-                        template = `<div id="${login}" class="box auto";">
-                                    <div class="image-round">
-                                        <img src="${avatar_url}" alt="${login}">
-                                    </div>
-                                    <h3 id="name">${login}</h3>
-                                    <p id="position">${position}</p>
-                                </div>`
-                    } else {
-                        json[login].seen = true
-                        template = `<div id="${login}" class="box auto";">
-                                    <div class="image-round">
-                                        <img src="${json[login].img}" alt="${login}">
-                                    </div>
-                                    <h3 id="name">${login}</h3>
-                                    <p id="position">${json[login].position}</p>
-                                </div>`
+
+
+
+
                     }
 
+                    let resp = {json, members}
+                    resolve(resp)
 
-
-
-
-                    let user = document.createElement("div");
-                    user.innerHTML = template
-                    members.appendChild(user.firstChild)
-
-
-
-
-
-                }
-
-                let resp = {json, members}
-                resolve(resp)
-
-            });
+                });
+            } else {
+                resolve({json, members})
+            }
         }
     )
 
@@ -58,7 +61,7 @@ function gitMembers(json, members) {
 
 
 
-function loadMembers() {
+function loadMembers(exec) {
     return new Promise(
         function (resolve, reject) {
 
@@ -68,22 +71,22 @@ function loadMembers() {
 
             $.getJSON("js/config/members.json", function (json) {
 
-                gitMembers(json, members).then(({ json, members }) => {
-                    console.log(json);
-                    
-
-                    Object.keys(json).forEach(key => {
-                        let obj = json[key]
+                gitMembers(json, members, exec).then(({ json, members }) => {
+                    console.log(json.executives);
+                    Object.keys(json.executives).forEach(key => {
+                        let obj = json.executives[key]
+                        console.log(obj);
+                        
 
                         if (obj.seen == undefined || obj.seen == false) {
 
-                            let template = `<div id="${obj.name}" class="box";">
-                                            <div class="image-round">
-                                                <img src="${obj.img}" alt="${obj.name}">
-                                            </div>
-                                            <h3 id="name">${obj.name}</h3>
-                                            <p id="position">${obj.position}</p>
-                                        </div>`
+                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${obj.img}" alt="${obj.name}">
+                                                    <h2 id="name">${obj.name}</h2>
+                                                    <h3 id="position">${obj.position}</h3>
+                                                </div>
+                                            </div>`
 
                             let user = document.createElement("div");
                             user.innerHTML = template
