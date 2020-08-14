@@ -343,6 +343,29 @@ $(document).ready(function () {
 	});
 });
 
+$(document).ready(function () {
+	$('.newsletter-logos').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 1500,
+		arrows: false,
+		dots: false,
+		pauseOnHover: true,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 4
+			}
+		}, {
+			breakpoint: 520,
+			settings: {
+				slidesToShow: 3
+			}
+		}]
+	});
+});
+
 (function ($) {
 	// Call all functions
 	loader();
