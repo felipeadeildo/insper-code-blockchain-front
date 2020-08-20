@@ -348,10 +348,10 @@ $(document).ready(function () {
 		slidesToShow: 3,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 1500,
+		autoplaySpeed: 3500,
 		arrows: false,
 		dots: false,
-		pauseOnHover: true,
+		pauseOnHover: false,
 		responsive: [{
 			breakpoint: 768,
 			settings: {
