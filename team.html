@@ -132,29 +132,44 @@
 
     <script>
         function loadSite() {
-            let diivv = loadMembers(true).then(diivv => {
-                console.log(diivv);
+            let diivv33 = loadMembers(true).then(diivv1 => {
+                console.log(diivv1);
 
-                document.getElementById("team").appendChild(diivv)
+                document.getElementById("team").appendChild(diivv1)
             })
 
-            let diivv0 = loadMembersfinance2(true).then(diivv => {
-                console.log(diivv);
+            loadSite0()
+        }
+        function loadSite0() {
 
-                document.getElementById("team2").appendChild(diivv)
+
+            let diivv00 = loadMembersfinance2(true).then(diivv2 => {
+                console.log(diivv2);
+
+                document.getElementById("team2").appendChild(diivv2)
             })
+            loadSite1()
+        }
 
-            let diivv1 = loadMembersbusiness1(true).then(diivv => {
-                console.log(diivv);
+        function loadSite1() {
 
-                document.getElementById("team1").appendChild(diivv)
+
+            let diivv11 = loadMembersbusiness1(true).then(diivv3 => {
+                console.log(diivv3);
+
+                document.getElementById("team1").appendChild(diivv3)
             })
+            loadSite2()
+
+        }
+
+        function loadSite2() {
 
 
-            let diivv2 = loadMemberstech0(true).then(diivv => {
-                console.log(diivv);
+            let diivv22 = loadMemberstech0(true).then(diivv4 => {
+                console.log(diivv4);
 
-                document.getElementById("team0").appendChild(diivv)
+                document.getElementById("team0").appendChild(diivv4)
             })
         }
     </script>

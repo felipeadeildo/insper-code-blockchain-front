@@ -126,20 +126,20 @@ function loadMembersbusiness1(exec) {
     return new Promise(
         function (resolve, reject) {
 
-            members = document.createElement("div")
-            members.class = "flex-container"
-            members.id = "members"
+            let members1 = document.createElement("div")
+            members1.class = "flex-container"
+            members1.id = "members1"
 
             $.getJSON("js/config/members.json", function (json) {
 
-                gitMembers(json, members, exec).then(({ json, members }) => {
-                    Object.keys(json.business).forEach(key => {
-                        let obj = json.business[key]
+
+                Object.keys(json.business).forEach(key => {
+                    let obj = json.business[key]
 
 
-                        if (obj.seen == undefined || obj.seen == false) {
+                    if (obj.seen == undefined || obj.seen == false) {
 
-                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                        let template1 = `<div id="${obj.name}" class="col-sm-4";">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
@@ -147,15 +147,15 @@ function loadMembersbusiness1(exec) {
                                                 </div>
                                             </div>`
 
-                            let user = document.createElement("div");
-                            user.innerHTML = template
-                            members.appendChild(user.firstChild)
-                        }
-                        resolve(members);
+                        let user = document.createElement("div");
+                        user.innerHTML = template1
+                        members1.appendChild(user.firstChild)
+                    }
+                    resolve(members1);
 
 
-                    });
-                })
+                });
+
             })
         })
 
@@ -167,20 +167,20 @@ function loadMembersfinance2(exec) {
     return new Promise(
         function (resolve, reject) {
 
-            members = document.createElement("div")
-            members.class = "flex-container"
-            members.id = "members"
+            let members2 = document.createElement("div")
+            members2.class = "flex-container"
+            members2.id = "members2"
 
             $.getJSON("js/config/members.json", function (json) {
 
-                gitMembers(json, members, exec).then(({ json, members }) => {
-                    Object.keys(json.finance).forEach(key => {
-                        let obj = json.finance[key]
+
+                Object.keys(json.finance).forEach(key => {
+                    let obj = json.finance[key]
 
 
-                        if (obj.seen == undefined || obj.seen == false) {
+                    if (obj.seen == undefined || obj.seen == false) {
 
-                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                        let template2 = `<div id="${obj.name}" class="col-sm-4";">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
@@ -188,15 +188,15 @@ function loadMembersfinance2(exec) {
                                                 </div>
                                             </div>`
 
-                            let user = document.createElement("div");
-                            user.innerHTML = template
-                            members.appendChild(user.firstChild)
-                        }
-                        resolve(members);
+                        let user = document.createElement("div");
+                        user.innerHTML = template2
+                        members2.appendChild(user.firstChild)
+                    }
+                    resolve(members2);
 
 
-                    });
-                })
+                });
+
             })
         })
 
@@ -207,20 +207,19 @@ function loadMemberstech0(exec) {
     return new Promise(
         function (resolve, reject) {
 
-            members = document.createElement("div")
-            members.class = "flex-container"
-            members.id = "members"
+            let members0 = document.createElement("div")
+            members0.class = "flex-container"
+            members0.id = "members0"
 
             $.getJSON("js/config/members.json", function (json) {
 
-                gitMembers(json, members, exec).then(({ json, members }) => {
-                    Object.keys(json.finance).forEach(key => {
-                        let obj = json.finance[key]
+                Object.keys(json.finance).forEach(key => {
+                    let obj = json.finance[key]
 
 
-                        if (obj.seen == undefined || obj.seen == false) {
+                    if (obj.seen == undefined || obj.seen == false) {
 
-                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                        let template0 = `<div id="${obj.name}" class="col-sm-4";">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
@@ -228,15 +227,14 @@ function loadMemberstech0(exec) {
                                                 </div>
                                             </div>`
 
-                            let user = document.createElement("div");
-                            user.innerHTML = template
-                            members.appendChild(user.firstChild)
-                        }
-                        resolve(members);
+                        let user = document.createElement("div");
+                        user.innerHTML = template0
+                        members0.appendChild(user.firstChild)
+                    }
+                    resolve(members0);
 
 
-                    });
-                })
+                });
             })
         })
 
