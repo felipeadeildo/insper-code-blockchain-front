@@ -140,11 +140,13 @@ function loadMembersbusiness1(exec) {
                     if (obj.seen == undefined || obj.seen == false) {
 
                         let template1 = `<div id="${obj.name}" class="col-sm-4";">
-                                                <div class="member">
-                                                    <img src="${obj.img}" alt="${obj.name}">
-                                                    <h2 id="name">${obj.name}</h2>
-                                                    <h3 id="position">${obj.position}</h3>
-                                                </div>
+                                                <a href="${obj.linkedin}">
+                                                    <div class="member">
+                                                        <img src="${obj.img}" alt="${obj.name}">
+                                                        <h2 id="name">${obj.name}</h2>
+                                                        <h3 id="position">${obj.position}</h3>
+                                                    </div>
+                                                </a>
                                             </div>`
 
                         let user = document.createElement("div");
