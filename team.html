@@ -84,30 +84,7 @@
                 <h2>Meet our <span>Executive</span> Board</h2>
             </div>
             <div class="row" id="team">
-                <!-- single member -->
-                <div class="col-sm-4">
-                    <div class="member">
-                        <img src="img/team/1.jpg" alt="">
-                        <h2>Christinne Williams</h2>
-                        <h3>President</h3>
-                    </div>
-                </div>
-                <!-- single member -->
-                <div class="col-sm-4">
-                    <div class="member">
-                        <img src="img/team/2.jpg" alt="">
-                        <h2>Christinne Williams</h2>
-                        <h3>Junior developer</h3>
-                    </div>
-                </div>
-                <!-- single member -->
-                <div class="col-sm-4">
-                    <div class="member">
-                        <img src="img/team/3.jpg" alt="">
-                        <h2>Christinne Williams</h2>
-                        <h3>Digital designer</h3>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -119,46 +96,8 @@
             <div class="section-title dark">
                 <h2>Get in <span>the Lab</span> and see the services</h2>
             </div>
-            <div class="row">
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-023-flask"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>Get in the lab</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-011-compass"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>Projects online</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-037-idea"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>SMART MARKETING</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="team0">
+
             </div>
         </div>
     </div>
@@ -169,46 +108,22 @@
             <div class="section-title dark">
                 <h2>Get in <span>the Lab</span> and see the services</h2>
             </div>
-            <div class="row">
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-023-flask"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>Get in the lab</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-011-compass"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>Projects online</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- single service -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="service">
-                        <div class="icon">
-                            <i class="flaticon-037-idea"></i>
-                        </div>
-                        <div class="service-text">
-                            <h2>SMART MARKETING</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec
-                                elementum id, suscipit id nulla..</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="team1">
+
+            </div>
+        </div>
+    </div>
+    <!-- services section end -->
+
+
+    <!-- Services section -->
+    <div class="services-section spad">
+        <div class="container">
+            <div class="section-title dark">
+                <h2>Get in <span>the Lab</span> and see the services</h2>
+            </div>
+            <div class="row" id="team2">
+
             </div>
         </div>
     </div>
@@ -219,8 +134,27 @@
         function loadSite() {
             let diivv = loadMembers(true).then(diivv => {
                 console.log(diivv);
-                
+
                 document.getElementById("team").appendChild(diivv)
+            })
+
+            let diivv0 = loadMembersfinance2(true).then(diivv => {
+                console.log(diivv);
+
+                document.getElementById("team2").appendChild(diivv)
+            })
+
+            let diivv1 = loadMembersbusiness1(true).then(diivv => {
+                console.log(diivv);
+
+                document.getElementById("team1").appendChild(diivv)
+            })
+
+
+            let diivv2 = loadMemberstech0(true).then(diivv => {
+                console.log(diivv);
+
+                document.getElementById("team0").appendChild(diivv)
             })
         }
     </script>

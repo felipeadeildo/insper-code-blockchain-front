@@ -46,12 +46,12 @@ function gitMembers(json, members, exec) {
 
                     }
 
-                    let resp = {json, members}
+                    let resp = { json, members }
                     resolve(resp)
 
                 });
             } else {
-                resolve({json, members})
+                resolve({ json, members })
             }
         }
     )
@@ -76,7 +76,7 @@ function loadMembers(exec) {
                     Object.keys(json.executives).forEach(key => {
                         let obj = json.executives[key]
                         console.log(obj);
-                        
+
 
                         if (obj.seen == undefined || obj.seen == false) {
 
@@ -117,5 +117,127 @@ function loadMembers(exec) {
 
 
 
+
+}
+
+
+
+function loadMembersbusiness1(exec) {
+    return new Promise(
+        function (resolve, reject) {
+
+            members = document.createElement("div")
+            members.class = "flex-container"
+            members.id = "members"
+
+            $.getJSON("js/config/members.json", function (json) {
+
+                gitMembers(json, members, exec).then(({ json, members }) => {
+                    Object.keys(json.business).forEach(key => {
+                        let obj = json.business[key]
+
+
+                        if (obj.seen == undefined || obj.seen == false) {
+
+                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${obj.img}" alt="${obj.name}">
+                                                    <h2 id="name">${obj.name}</h2>
+                                                    <h3 id="position">${obj.position}</h3>
+                                                </div>
+                                            </div>`
+
+                            let user = document.createElement("div");
+                            user.innerHTML = template
+                            members.appendChild(user.firstChild)
+                        }
+                        resolve(members);
+
+
+                    });
+                })
+            })
+        })
+
+}
+
+
+
+function loadMembersfinance2(exec) {
+    return new Promise(
+        function (resolve, reject) {
+
+            members = document.createElement("div")
+            members.class = "flex-container"
+            members.id = "members"
+
+            $.getJSON("js/config/members.json", function (json) {
+
+                gitMembers(json, members, exec).then(({ json, members }) => {
+                    Object.keys(json.finance).forEach(key => {
+                        let obj = json.finance[key]
+
+
+                        if (obj.seen == undefined || obj.seen == false) {
+
+                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${obj.img}" alt="${obj.name}">
+                                                    <h2 id="name">${obj.name}</h2>
+                                                    <h3 id="position">${obj.position}</h3>
+                                                </div>
+                                            </div>`
+
+                            let user = document.createElement("div");
+                            user.innerHTML = template
+                            members.appendChild(user.firstChild)
+                        }
+                        resolve(members);
+
+
+                    });
+                })
+            })
+        })
+
+}
+
+
+function loadMemberstech0(exec) {
+    return new Promise(
+        function (resolve, reject) {
+
+            members = document.createElement("div")
+            members.class = "flex-container"
+            members.id = "members"
+
+            $.getJSON("js/config/members.json", function (json) {
+
+                gitMembers(json, members, exec).then(({ json, members }) => {
+                    Object.keys(json.finance).forEach(key => {
+                        let obj = json.finance[key]
+
+
+                        if (obj.seen == undefined || obj.seen == false) {
+
+                            let template = `<div id="${obj.name}" class="col-sm-4";">
+                                                <div class="member">
+                                                    <img src="${obj.img}" alt="${obj.name}">
+                                                    <h2 id="name">${obj.name}</h2>
+                                                    <h3 id="position">${obj.position}</h3>
+                                                </div>
+                                            </div>`
+
+                            let user = document.createElement("div");
+                            user.innerHTML = template
+                            members.appendChild(user.firstChild)
+                        }
+                        resolve(members);
+
+
+                    });
+                })
+            })
+        })
 
 }
