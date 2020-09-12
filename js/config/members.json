@@ -8,18 +8,36 @@
         }
     },
     "executives": {
-        "brunoartc": {
-            "name": "brunoartc",
-            "position": "technology director",
+        "lucasmuchaluat": {
+            "name": "Lucas Muchaluat",
+            "position": "Presidente e Diretor de Business",
+            "img": "https://avatars0.githubusercontent.com/u/38561434?s=460&u=0c2b0b5b3d8236add794c3a260d6a37404eebd0e&v=4",
+            "linkedin": "https://www.linkedin.com/in/lucas-muchaluat/"
+        },
+        "arthur": {
+            "name": "Arthur Carvalho",
+            "position": "Vice-Presidente e Diretor de Finance",
             "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=200",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
         },
-        "lucasmuchaluat": {
-            "name": "lucasmuchaluat",
-            "position": "president",
-            "img": "https://avatars0.githubusercontent.com/u/38561434?s=460&u=0c2b0b5b3d8236add794c3a260d6a37404eebd0e&v=4",
+        "brunoartc": {
+            "name": "Bruno Cesconetto",
+            "position": "Diretor de Tecnlogia",
+            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=400",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
-        }
+        },
+        "enzo": {
+            "name": "Enzo Takeshi",
+            "position": "Diretor de Conteúdos",
+            "img": "https://2.gravatar.com/avatar/554b329d81d838d78582b9deed0375fa?s=400&d=mm",
+            "linkedin": "https://www.linkedin.com/in/enzotakeshi/"
+        },
+        "tanque": {
+            "name": "Matheus Pecorari",
+            "position": "Diretor de Eventos",
+            "img": "https://pt.gravatar.com/userimage/191886983/b3acdf498a1807fbfb61a694136a8f50.jpg?s=400",
+            "linkedin": "https://www.linkedin.com/in/enzotakeshi/"
+        },
     },
     "business": {
         "brunoartc": {
