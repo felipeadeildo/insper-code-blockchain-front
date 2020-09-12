@@ -17,13 +17,13 @@
         "arthur": {
             "name": "Arthur Carvalho",
             "position": "Vice-Presidente e Diretor de Finance",
-            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=200",
+            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=300",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
         },
         "brunoartc": {
             "name": "Bruno Cesconetto",
             "position": "Diretor de Tecnlogia",
-            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=400",
+            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=300",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
         },
         "enzo": {
@@ -35,8 +35,8 @@
         "tanque": {
             "name": "Matheus Pecorari",
             "position": "Diretor de Eventos",
-            "img": "https://pt.gravatar.com/userimage/191886983/b3acdf498a1807fbfb61a694136a8f50.jpg?s=400",
-            "linkedin": "https://www.linkedin.com/in/enzotakeshi/"
+            "img": "https://pt.gravatar.com/userimage/191886983/b3acdf498a1807fbfb61a694136a8f50.jpg?s=300",
+            "linkedin": "https://www.linkedin.com/in/matheus-pecorari-0a613a182/"
         }
     },
     "business": {
@@ -51,6 +51,12 @@
             "position": "president",
             "img": "https://secure.gravatar.com/avatar/071648eef6b1ea15058f93eb3905f07d?s=200",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        },
+        "tanque": {
+            "name": "Matheus Pecorari",
+            "position": "Diretor de Eventos",
+            "img": "https://pt.gravatar.com/userimage/191886983/b3acdf498a1807fbfb61a694136a8f50.jpg?s=300",
+            "linkedin": "https://www.linkedin.com/in/matheus-pecorari-0a613a182/"
         }
     },
     "finance": {
