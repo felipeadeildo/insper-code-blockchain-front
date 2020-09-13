@@ -24,12 +24,14 @@ function gitMembers(json, members, exec) {
                         } else {
                             json[login].seen = true
                             let template = `<div id="${obj.name}" class="col-sm-4";">
+                                            <a href="${obj.linkedin}">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
                                                     <h3 id="position">${obj.position}</h3>
                                                 </div>
-                                            </div>`
+                                            </a>
+                                        </div>`
                         }
 
 
@@ -81,11 +83,13 @@ function loadMembers(exec) {
                         if (obj.seen == undefined || obj.seen == false) {
 
                             let template = `<div id="${obj.name}" class="col-sm-4";">
+                                            <a href="${obj.linkedin}">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
                                                     <h3 id="position">${obj.position}</h3>
                                                 </div>
+                                            </a>
                                             </div>`
 
                             let user = document.createElement("div");
@@ -183,12 +187,14 @@ function loadMembersfinance2(exec) {
                     if (obj.seen == undefined || obj.seen == false) {
 
                         let template2 = `<div id="${obj.name}" class="col-sm-4";">
+                                            <a href="${obj.linkedin}">    
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
                                                     <h3 id="position">${obj.position}</h3>
                                                 </div>
-                                            </div>`
+                                            </a>
+                                          </div>`
 
                         let user = document.createElement("div");
                         user.innerHTML = template2
@@ -222,12 +228,14 @@ function loadMemberstech0(exec) {
                     if (obj.seen == undefined || obj.seen == false) {
 
                         let template0 = `<div id="${obj.name}" class="col-sm-4";">
+                                            <a href="${obj.linkedin}">
                                                 <div class="member">
                                                     <img src="${obj.img}" alt="${obj.name}">
                                                     <h2 id="name">${obj.name}</h2>
                                                     <h3 id="position">${obj.position}</h3>
                                                 </div>
-                                            </div>`
+                                            </a>
+                                        </div>`
 
                         let user = document.createElement("div");
                         user.innerHTML = template0
