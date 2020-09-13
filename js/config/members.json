@@ -1,12 +1,5 @@
 {
-    "membros": {
-        "brunoartc": {
-            "name": "brunoartc",
-            "position": "technology director",
-            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=200",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
-        }
-    },
+    "membros": {},
     "executives": {
         "lucasmuchaluat": {
             "name": "Lucas Muchaluat",
@@ -40,51 +33,69 @@
         }
     },
     "business": {
-        "brunoartc": {
-            "name": "membro1",
-            "position": "technology director",
-            "img": "http://blockchainsper.com/img/avatar/02.jpeg",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        "ze": {
+            "name": "Jose Fernandes",
+            "position": "Analista de Business",
+            "img": "https://secure.gravatar.com/avatar/31838425c3eac792ea191417c357f895?s=300",
+            "linkedin": "https://www.linkedin.com/in/joserafaelfernandes"
         },
-        "lucasmuchaluat": {
-            "name": "membro2",
-            "position": "president",
-            "img": "https://secure.gravatar.com/avatar/071648eef6b1ea15058f93eb3905f07d?s=200",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        "xara": {
+            "name": "Lucas Ramos",
+            "position": "Analista de Business",
+            "img": "https://secure.gravatar.com/avatar/79608716aaebce7cedfc96ce5039e3f9?s=300",
+            "linkedin": "https://www.linkedin.com/in/lucasramos00"
         },
-        "tanque": {
-            "name": "Matheus Pecorari",
-            "position": "Diretor de Eventos",
-            "img": "https://pt.gravatar.com/userimage/191886983/b3acdf498a1807fbfb61a694136a8f50.jpg?s=300",
-            "linkedin": "https://www.linkedin.com/in/matheus-pecorari-0a613a182/"
+        "rafa": {
+            "name": "Rafael Garcia",
+            "position": "Analista de Business",
+            "img": "https://pt.gravatar.com/userimage/191935414/94b35006df03d03c9c6507b0d2575d63.png?s=300",
+            "linkedin": "https://www.linkedin.com/in/rafael-racy-garcia-b9b8861a4/"
+        },
+        "vitinho": {
+            "name": "Vitor Marques",
+            "position": "Analista de Business",
+            "img": "https://secure.gravatar.com/avatar/49dd1f7e40ffb247517658726b5e0f97?s=300",
+            "linkedin": "https://www.linkedin.com/in/vitor-calcete/"
         }
     },
     "finance": {
-        "brunoartc": {
-            "name": "brunoartc",
-            "position": "technology director",
-            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=200",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        "jv": {
+            "name": "João Vitor Morales",
+            "position": "Analista de Finanças",
+            "img": "https://secure.gravatar.com/avatar/ea6003940e0f7ca6f22d4fa092c089b8?s=300",
+            "linkedin": "https://www.linkedin.com/in/joão-vitor-araújo-morales-055b09169"
         },
         "lucasmuchaluat": {
             "name": "lucasmuchaluat",
             "position": "president",
-            "img": "https://avatars0.githubusercontent.com/u/38561434?s=460&u=0c2b0b5b3d8236add794c3a260d6a37404eebd0e&v=4",
+            "img": "http://blockchainsper.com/img/avatar/02.jpeg",
             "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
         }
     },
     "tech": {
-        "brunoartc": {
-            "name": "brunoartc",
-            "position": "technology director",
-            "img": "https://secure.gravatar.com/avatar/036902a159bd2e20b0ffa4398032e3a4.png?s=200",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        "carlos": {
+            "name": "Carlos Rolim",
+            "position": "Analista de Tecnologia",
+            "img": "https://secure.gravatar.com/avatar/bfd657c9b601e839a0281c4adcda0731?s=300",
+            "linkedin": "https://www.linkedin.com/in/carlos-henrique-rolim-cabral-07a44014b"
         },
-        "lucasmuchaluat": {
-            "name": "lucasmuchaluat",
-            "position": "president",
-            "img": "https://avatars0.githubusercontent.com/u/38561434?s=460&u=0c2b0b5b3d8236add794c3a260d6a37404eebd0e&v=4",
-            "linkedin": "https://www.linkedin.com/in/bruno-arthur-cesconetto-9959b6147/"
+        "carol": {
+            "name": "Caroline Chaim",
+            "position": "Analista de Tecnologia",
+            "img": "https://secure.gravatar.com/avatar/cd8a5314b8203cb07b349229c04e72a6?s=300",
+            "linkedin": "https://www.linkedin.com/in/caroline-chaim-26b3a5194"
+        },
+        "fernando": {
+            "name": "Fernando Franca",
+            "position": "Analista de Tecnologia",
+            "img": "https://secure.gravatar.com/avatar/6ccfa591c3a89639088a3f69e07d00f1?s=300",
+            "linkedin": "https://www.linkedin.com/in/fernandopmgfranca/"
+        },
+        "gobas": {
+            "name": "Gustavo Gobetti",
+            "position": "Analista de Tecnologia",
+            "img": "https://secure.gravatar.com/avatar/6ccfa591c3a89639088a3f69e07d00f1?s=300",
+            "linkedin": "https://www.linkedin.com/in/gustavo-gobetti/"
         }
     }
 }
