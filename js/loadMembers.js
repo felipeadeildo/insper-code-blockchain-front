@@ -221,8 +221,8 @@ function loadMemberstech0(exec) {
 
             $.getJSON("js/config/members.json", function (json) {
 
-                Object.keys(json.finance).forEach(key => {
-                    let obj = json.finance[key]
+                Object.keys(json.tech).forEach(key => {
+                    let obj = json.tech[key]
 
 
                     if (obj.seen == undefined || obj.seen == false) {

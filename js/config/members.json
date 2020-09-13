@@ -45,17 +45,17 @@
             "img": "https://secure.gravatar.com/avatar/79608716aaebce7cedfc96ce5039e3f9?s=300",
             "linkedin": "https://www.linkedin.com/in/lucasramos00"
         },
-        "rafa": {
-            "name": "Rafael Garcia",
-            "position": "Analista de Business",
-            "img": "https://pt.gravatar.com/userimage/191935414/94b35006df03d03c9c6507b0d2575d63.png?s=300",
-            "linkedin": "https://www.linkedin.com/in/rafael-racy-garcia-b9b8861a4/"
-        },
         "vitinho": {
             "name": "Vitor Marques",
             "position": "Analista de Business",
             "img": "https://secure.gravatar.com/avatar/49dd1f7e40ffb247517658726b5e0f97?s=300",
             "linkedin": "https://www.linkedin.com/in/vitor-calcete/"
+        },
+        "rafa": {
+            "name": "Rafael Garcia",
+            "position": "Analista de Business",
+            "img": "https://pt.gravatar.com/userimage/191935414/94b35006df03d03c9c6507b0d2575d63.png?s=300",
+            "linkedin": "https://www.linkedin.com/in/rafael-racy-garcia-b9b8861a4/"
         }
     },
     "finance": {
