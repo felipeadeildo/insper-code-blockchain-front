@@ -1100,6 +1100,33 @@ ul {
 	color: #fff;
 }
 
+/*------------------------
+	Table Section
+--------------------------*/
+
+#course_table {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  #course_table td, #course_table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+  
+  #course_table tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #course_table tr:hover {background-color: #ddd;}
+  
+  #course_table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #EE881A;
+	color: white;
+  }
+
 
 /*------------------------
 	Blog Page
@@ -1369,7 +1396,7 @@ ul {
 .search-form input[type="text"] {
 	width: 100%;
 	border: none;
-	background: #2be6ab;
+	background: #EE881A;
 	padding: 15px 20px;
 }
 
@@ -1387,7 +1414,7 @@ ul {
 	top: 0;
 	border: 0;
 	background: #182130;
-	color: #2be6ab;
+	color: #EE881A;
 }
 
 .search-form .search-btn:focus,
@@ -1507,7 +1534,7 @@ ul {
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: #2be6ab;
+	background: #EE881A;
 }
 
 .bar-inner span {
@@ -1570,7 +1597,7 @@ ul {
 }
 
 .site-accordions .panel.active .panel-heading {
-	background: #2be6ab;
+	background: #EE881A;
 	color: #182130;
 }
 
@@ -1580,7 +1607,7 @@ ul {
 
 .site-accordions .panel.active .panel-heading a:after {
 	content: "-";
-	color: #2be6ab;
+	color: #EE881A;
 	left: 23px;
 	padding-top: 13px;
 }

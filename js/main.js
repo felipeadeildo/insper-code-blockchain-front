@@ -290,7 +290,7 @@ function progressCircle() {
 		value: 0.75,
 		size: 175,
 		thickness: 5,
-		fill: "#2be6ab",
+		fill: "#EE881A",
 		emptyFill: "rgba(0, 0, 0, 0)"
 	});
 	//Set progress circle 2
@@ -298,7 +298,7 @@ function progressCircle() {
 		value: 0.83,
 		size: 175,
 		thickness: 5,
-		fill: "#2be6ab",
+		fill: "#EE881A",
 		emptyFill: "rgba(0, 0, 0, 0)"
 	});
 	//Set progress circle 3
@@ -306,7 +306,7 @@ function progressCircle() {
 		value: 0.25,
 		size: 175,
 		thickness: 5,
-		fill: "#2be6ab",
+		fill: "#EE881A",
 		emptyFill: "rgba(0, 0, 0, 0)"
 	});
 	//Set progress circle 4
@@ -314,7 +314,7 @@ function progressCircle() {
 		value: 0.95,
 		size: 175,
 		thickness: 5,
-		fill: "#2be6ab",
+		fill: "#EE881A",
 		emptyFill: "rgba(0, 0, 0, 0)"
 	});
 
