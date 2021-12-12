@@ -13,8 +13,7 @@ import { SiLinkedin } from 'react-icons/si';
 import { GoRocket } from 'react-icons/go';
 
 export default function Card({ cardInfo }) {
-  console.log(cardInfo)
-  const cargo = cardInfo.traits.find(x => x.trait_type === "Cargo")
+  const cargo = cardInfo.metadata.attributes.find(x => x.trait_type === "Cargo")
 
   return (
     <Center py={12}>
@@ -41,7 +40,7 @@ export default function Card({ cardInfo }) {
             pos: 'absolute',
             top: 5,
             left: 0,
-            backgroundImage: `url(${cardInfo.image_url})`,
+            backgroundImage: `url(${cardInfo.metadata.image})`,
             filter: 'blur(15px)',
             zIndex: -1,
           }}
@@ -53,9 +52,8 @@ export default function Card({ cardInfo }) {
           <Image
             rounded={'lg'}
             height={230}
-            width={282}
             objectFit={'cover'}
-            src={cardInfo.image_url}
+            src={cardInfo.metadata.image}
           />
         </Box>
         <Stack pt={10} align={'center'}>
@@ -63,17 +61,17 @@ export default function Card({ cardInfo }) {
             {cargo.value}
           </Text>
           <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-            {cardInfo.name}
+            {cardInfo.metadata.name}
           </Heading>
           <Stack>
-            <Link href={cardInfo.external_link} isExternal>
+            <Link href={cardInfo.metadata.external_url} isExternal>
               <Button w={'full'} colorScheme={'messenger'} leftIcon={<SiLinkedin />}>
                 <Center>
                   <Text>Linkedin</Text>
                 </Center>
               </Button>
             </Link >
-            <Link href={cardInfo.permalink} isExternal>
+            <Link href={`https://opensea.io/assets/matic/${cardInfo.token_address}/${cardInfo.token_id}`} isExternal>
               <Button w={'full'} colorScheme={'messenger'} leftIcon={<GoRocket />}>
                 <Center>
                   View on Opensea
