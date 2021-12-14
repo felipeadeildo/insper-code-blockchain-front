@@ -6,6 +6,8 @@ import {
   Text,
   Wrap,
   WrapItem,
+  CircularProgress,
+  Center,
   chakra
 } from '@chakra-ui/react';
 import { useMoralis } from "react-moralis";
@@ -80,58 +82,64 @@ export default function MembrosAtuais() {
           </Heading>
         </Stack>
       </Container>
-      <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
-        fontWeight={'bold'}>
-        Presidente e Diretores
-      </chakra.h1>
-      <Wrap spacing="30px" justify="center">
-        {diretores.map((card, index) => (
-          <WrapItem key={index}>
-            <Card cardInfo={card} />
-          </WrapItem>
-        ))}
-      </Wrap>
-      <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
-        fontWeight={'bold'}>
-        Business
-      </chakra.h1>
-      <Wrap spacing="30px" justify="center">
-        {business.map((card, index) => (
-          <WrapItem key={index}>
-            <Card cardInfo={card} />
-          </WrapItem>
-        ))}
-      </Wrap>
-      <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
-        fontWeight={'bold'}>
-        Finance
-      </chakra.h1>
-      <Wrap spacing="30px" justify="center">
-        {finance.map((card, index) => (
-          <WrapItem key={index}>
-            <Card cardInfo={card} />
-          </WrapItem>
-        ))}
-      </Wrap>
-      <chakra.h1
-        textAlign={'center'}
-        fontSize={'4xl'}
-        fontWeight={'bold'}>
-        Tech
-      </chakra.h1>
-      <Wrap spacing="30px" justify="center">
-        {tech.map((card, index) => (
-          <WrapItem key={index}>
-            <Card cardInfo={card} />
-          </WrapItem>
-        ))}
-      </Wrap>
+      {diretores.length === 0 ?
+        <Center><CircularProgress isIndeterminate color='orange.400' /> </Center>
+        :
+        <>
+          <chakra.h1
+            textAlign={'center'}
+            fontSize={'4xl'}
+            fontWeight={'bold'}>
+            Presidente e Diretores
+          </chakra.h1>
+          <Wrap spacing="30px" justify="center">
+            {diretores.map((card, index) => (
+              <WrapItem key={index}>
+                <Card cardInfo={card} />
+              </WrapItem>
+            ))}
+          </Wrap>
+          <chakra.h1
+            textAlign={'center'}
+            fontSize={'4xl'}
+            fontWeight={'bold'}>
+            Business
+          </chakra.h1>
+          <Wrap spacing="30px" justify="center">
+            {business.map((card, index) => (
+              <WrapItem key={index}>
+                <Card cardInfo={card} />
+              </WrapItem>
+            ))}
+          </Wrap>
+          <chakra.h1
+            textAlign={'center'}
+            fontSize={'4xl'}
+            fontWeight={'bold'}>
+            Finance
+          </chakra.h1>
+          <Wrap spacing="30px" justify="center">
+            {finance.map((card, index) => (
+              <WrapItem key={index}>
+                <Card cardInfo={card} />
+              </WrapItem>
+            ))}
+          </Wrap>
+          <chakra.h1
+            textAlign={'center'}
+            fontSize={'4xl'}
+            fontWeight={'bold'}>
+            Tech
+          </chakra.h1>
+          <Wrap spacing="30px" justify="center">
+            {tech.map((card, index) => (
+              <WrapItem key={index}>
+                <Card cardInfo={card} />
+              </WrapItem>
+            ))}
+          </Wrap>
+        </>
+      }
     </>
   );
 }

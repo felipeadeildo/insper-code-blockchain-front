@@ -1,6 +1,8 @@
 import {
   Box,
   Text,
+  Center,
+  CircularProgress,
   Container,
   Heading,
   Stat,
@@ -275,7 +277,10 @@ function Fundo() {
         </Box>
       </Box>
       <Box h="500px" m={10}>
-        <MyResponsiveLine data={data} />
+        {data.length === 0 ?
+          <Center><CircularProgress isIndeterminate color='orange.400' /> </Center> :
+          <MyResponsiveLine data={data} />
+        }
       </Box>
       <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }} marginBottom={20}>
         <chakra.h1
