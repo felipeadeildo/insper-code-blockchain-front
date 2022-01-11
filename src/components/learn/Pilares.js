@@ -1,7 +1,5 @@
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, chakra } from '@chakra-ui/react';
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, chakra, useColorModeValue } from '@chakra-ui/react';
 import { FcIdea, FcCollaboration, FcBusinessman } from 'react-icons/fc';
-// import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
-
 
 const Feature = ({ title, text, icon }) => {
   return (
@@ -18,7 +16,7 @@ const Feature = ({ title, text, icon }) => {
         {icon}
       </Flex>
       <Text fontWeight={600}>{title}</Text>
-      <Text color={'gray.600'}>{text}</Text>
+      <Text color={useColorModeValue('gray.600', 'gray.500')}>{text}</Text>
     </Stack>
   );
 };

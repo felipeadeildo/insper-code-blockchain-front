@@ -55,7 +55,7 @@ const researches = [
     tags: ["Research", "Criptomoedas"],
     texto: "Zcash (ZEC) é uma criptomoeda descentralizada criada em 2016 pelo programador norte-americano Zooko Wilcox, e mantida pela instituição sem fins lucrativos chamada Fundação Zcash.",
     link: "https://drive.google.com/file/d/1cFeVojTXAN10x64SInuLzBRBwmBDh7dh/view?usp=sharing",
-    image: "https://cdn.litemarkets.com/cache/uploads/blog_post/blog_posts/Zcash-Should-You-Invest-in-ZEC/zcash-logo-horizontal-fullcolor-twitter.png?q=75&s=12b927338ed87e270dfae59cd1f02615"
+    image: "https://0xzx.com/wp-content/uploads/2020/07/zcash-transaction.jpg"
   },
   {
     nome: "Litecoin",
@@ -152,6 +152,7 @@ const MyResponsiveLine = ({ data /* see data tab */ }) => (
     enableGridX={false}
     enableSlices={'x'}
     colors={{ scheme: 'pastel1' }}
+    borderColor={{ from: 'color' }}
     lineWidth={4}
     enablePoints={false}
     pointSize={9}
@@ -315,7 +316,7 @@ function Fundo() {
         <Divider marginTop="5" />
         <Wrap spacing="30px" marginTop="5">
           {researches.map((value, index) => (
-            <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}>
+            <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }} key={index} >
               <Box w="100%">
                 <Box borderRadius="lg" overflow="hidden">
                   <Link textDecoration="none" _hover={{ textDecoration: 'none' }} href={value.link} isExternal>

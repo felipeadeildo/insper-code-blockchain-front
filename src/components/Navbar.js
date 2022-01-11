@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   Text,
   IconButton,
@@ -13,16 +14,21 @@ import {
   PopoverContent,
   useColorModeValue,
   useDisclosure,
+  useColorMode
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  MoonIcon,
+  SunIcon
 } from '@chakra-ui/icons';
-import Logo from '../assets/logo.svg'
+import LogoLight from '../assets/logo-light.svg'
+import LogoDark from '../assets/logo-dark.svg'
 
 export default function WithSubnavigation() {
+  const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -52,7 +58,7 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link href="/">
-            <Image src={Logo} width="100px" />
+            {colorMode === 'light' ? <Image src={LogoLight} width="100px" /> : <Image src={LogoDark} width="100px" /> }
           </Link>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -64,6 +70,9 @@ export default function WithSubnavigation() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
+            <Button onClick={toggleColorMode}>
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
         </Stack>
       </Flex>
 

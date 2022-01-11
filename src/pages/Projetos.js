@@ -182,9 +182,9 @@ function Projetos() {
       </Box>
       {projetos.map((value, index) => {
         if (index % 2 === 0) {
-          return <Card1 data={value} />
+          return <Card1 data={value} key={index} />
         }
-        return <Card2 data={value} />
+        return <Card2 data={value} key={index} />
       })}
     </>
   );

@@ -116,7 +116,7 @@ export default function Contact() {
               fontWeight={600}
               fontSize={{ base: '1xl', sm: '2xl', lg: '3xl' }}>
               <Text
-                color="black"
+                color={useColorModeValue('black', 'white')}
                 as={'span'}
                 position={'relative'}
                 _after={{

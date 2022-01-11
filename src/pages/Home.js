@@ -26,7 +26,6 @@ function WithBackgroundImage() {
         px={useBreakpointValue({ base: 4, md: 8 })}>
         <Stack maxW={'2xl'} align={'flex-start'} spacing={6}>
           <Text
-            color={'black'}
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
