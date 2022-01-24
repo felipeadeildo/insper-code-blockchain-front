@@ -17,7 +17,7 @@ import {
 import {
   MdOutlineEmail
 } from 'react-icons/md';
-import { BsGithub, BsLinkedin, BsInstagram } from 'react-icons/bs';
+import { BsLinkedin, BsInstagram, BsDiscord } from 'react-icons/bs';
 
 export default function Contact() {
   return (
@@ -45,6 +45,16 @@ export default function Contact() {
                     <HStack
                       alignItems="center"
                       justifyContent="center">
+                      <Link isExternal href='https://discord.gg/jdK5yB48Mm'>
+                        <IconButton
+                          aria-label="discord"
+                          variant="ghost"
+                          size="lg"
+                          isRound={true}
+                          _hover={{ bg: '#0D74FF' }}
+                          icon={<BsDiscord size="28px" />}
+                        />
+                      </Link>
                       <Link isExternal href='mailto:blockchainsper@gmail.com'>
                         <IconButton
                           aria-label="github"
@@ -73,16 +83,6 @@ export default function Contact() {
                           isRound={true}
                           _hover={{ bg: '#0D74FF' }}
                           icon={<BsInstagram size="28px" />}
-                        />
-                      </Link>
-                      <Link isExternal href='https://github.com/BlockchainInsper'>
-                        <IconButton
-                          aria-label="github"
-                          variant="ghost"
-                          size="lg"
-                          isRound={true}
-                          _hover={{ bg: '#0D74FF' }}
-                          icon={<BsGithub size="28px" />}
                         />
                       </Link>
                     </HStack>

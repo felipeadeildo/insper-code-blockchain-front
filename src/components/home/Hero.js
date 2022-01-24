@@ -7,7 +7,10 @@ import {
   Icon,
   AspectRatio,
   useColorModeValue,
+  Button,
+  Link
 } from '@chakra-ui/react';
+import { SiDiscord } from 'react-icons/si';
 
 export default function CallToActionWithVideo() {
   return (
@@ -49,6 +52,23 @@ export default function CallToActionWithVideo() {
             estudantes de administração, economia, engenharias e direito a entidade está
             dividida em três áreas de estudo: Business, Finance e Tecnologia.
           </Text>
+          <Stack
+            spacing={{ base: 4, sm: 6 }}
+            direction={{ base: 'column', sm: 'row' }}>
+            <Link href="https://discord.gg/jdK5yB48Mm" isExternal>
+              <Button
+                rounded={'full'}
+                size={'lg'}
+                fontWeight={'normal'}
+                px={6}
+                color={'white'}
+                bg={'#5865F2'}
+                _hover={{ bg: '#5865F2' }}
+                leftIcon={<SiDiscord />}>
+                Discord
+              </Button>
+            </Link>
+          </Stack>
         </Stack>
         <Flex
           flex={1}
@@ -63,7 +83,7 @@ export default function CallToActionWithVideo() {
             top={'-20%'}
             left={0}
             zIndex={-1}
-            color={useColorModeValue('red.50', 'red.400')}
+            color={useColorModeValue('red.50', '#f68b23')}
           />
           <AspectRatio
             position={'relative'}
@@ -81,7 +101,7 @@ export default function CallToActionWithVideo() {
           </AspectRatio>
         </Flex>
       </Stack>
-    </Container>
+    </Container >
   );
 }
 

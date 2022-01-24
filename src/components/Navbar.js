@@ -58,7 +58,7 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Link href="/">
-            {colorMode === 'light' ? <Image src={LogoLight} width="100px" /> : <Image src={LogoDark} width="100px" /> }
+            {colorMode === 'light' ? <Image src={LogoLight} width="100px" /> : <Image src={LogoDark} width="100px" />}
           </Link>
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
             <DesktopNav />
@@ -70,9 +70,9 @@ export default function WithSubnavigation() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-            <Button onClick={toggleColorMode}>
-              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            </Button>
+          <Button onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
         </Stack>
       </Flex>
 
@@ -271,5 +271,9 @@ const NAV_ITEMS = [
   {
     label: 'Contato',
     href: '#/contact',
+  },
+  {
+    label: 'Processo Seletivo',
+    href: '#/ps',
   },
 ];
