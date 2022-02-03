@@ -14,14 +14,18 @@ import { useMoralis } from "react-moralis";
 
 import Card from '../components/members/Card'
 
-const time = {
-  ano: "2022.1",
-  chain: "matic",
-  address: "0x60063c63fb535c8ae98eff9730a3748e2a805458"
-}
+const times = [
+  {
+    ano: "2021.2",
+    chain: "polygon",
+    address: "0x7efFf2fb972EB77f61922af70820053566F483C5"
+  },
+]
 
-export default function MembrosAtuais() {
 
+export default function MembrosAlumni() {
+
+  const [presidentes, setPresidentes] = useState([]);
   const [diretores, setDiretores] = useState([]);
   const [business, setBusiness] = useState([]);
   const [finance, setFinance] = useState([]);
@@ -31,23 +35,34 @@ export default function MembrosAtuais() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const options = { chain: time.chain, address: time.address };
-      const NFTs = await Moralis.Web3API.token.getAllTokenIds(options);
+      var data = []
 
-      const data = NFTs.result
-      data.reverse()
+      for await (let value of times) {
+        let options = { chain: value.chain, address: value.address };
+        let NFTs = await Moralis.Web3API.token.getAllTokenIds(options);
+
+        data.push(...NFTs.result)
+      }
+
       const cargos = data.map(value => {
         value.metadata = JSON.parse(value.metadata)
         return value
-
       })
+
       const membrosTech = []
       const membrosBusiness = []
       const membrosFinance = []
       const membrosDiretores = []
+      const membrosPresidentes = []
 
       cargos.forEach(value => {
-        if (["Presidente", "Diretor de Business", "Diretor de Finance", "Diretor de Tech", "Diretor de Conteúdos"].includes(value.metadata.attributes[0].value)) {
+        if (value.metadata == null) {
+          return
+        }
+        if (["Presidente"].includes(value.metadata.attributes[0].value)) {
+          membrosPresidentes.push(value)
+        }
+        if (["Diretor de Business", "Diretor de Finance", "Diretor de Tech", "Diretor de Conteúdos"].includes(value.metadata.attributes[0].value)) {
           membrosDiretores.push(value);
         }
         if (["Analista de Finance", "Analista de Business/Finance", "Analista de Finance/Tech", "Analista de Business/Finance/Tech"].includes(value.metadata.attributes[0].value)) {
@@ -65,6 +80,7 @@ export default function MembrosAtuais() {
       setBusiness(membrosBusiness)
       setFinance(membrosFinance)
       setDiretores(membrosDiretores)
+      setPresidentes(membrosPresidentes)
     }
     fetchData()
   }, [Moralis.Web3API.token])
@@ -81,9 +97,9 @@ export default function MembrosAtuais() {
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            Conheça nosso time{' '}
+            Conheça nossos membros{' '}
             <Text as={'span'} color={'orange.400'}>
-              {time.ano}
+              Alumni
             </Text>
           </Heading>
         </Stack>
@@ -96,7 +112,20 @@ export default function MembrosAtuais() {
             textAlign={'center'}
             fontSize={'4xl'}
             fontWeight={'bold'}>
-            Presidente e Diretores
+            Ex-Presidentes
+          </chakra.h1>
+          <Wrap spacing="30px" justify="center">
+            {presidentes.map((card, index) => (
+              <WrapItem key={index}>
+                <Card cardInfo={card} />
+              </WrapItem>
+            ))}
+          </Wrap>
+          <chakra.h1
+            textAlign={'center'}
+            fontSize={'4xl'}
+            fontWeight={'bold'}>
+            Ex-Diretores
           </chakra.h1>
           <Wrap spacing="30px" justify="center">
             {diretores.map((card, index) => (
@@ -109,7 +138,7 @@ export default function MembrosAtuais() {
             textAlign={'center'}
             fontSize={'4xl'}
             fontWeight={'bold'}>
-            Business
+            Ex-Membros de Business
           </chakra.h1>
           <Wrap spacing="30px" justify="center">
             {business.map((card, index) => (
@@ -122,7 +151,7 @@ export default function MembrosAtuais() {
             textAlign={'center'}
             fontSize={'4xl'}
             fontWeight={'bold'}>
-            Finance
+            Ex-Membros de Finance
           </chakra.h1>
           <Wrap spacing="30px" justify="center">
             {finance.map((card, index) => (
@@ -135,7 +164,7 @@ export default function MembrosAtuais() {
             textAlign={'center'}
             fontSize={'4xl'}
             fontWeight={'bold'}>
-            Tech
+            Ex-Membros de Tech
           </chakra.h1>
           <Wrap spacing="30px" justify="center">
             {tech.map((card, index) => (

@@ -231,18 +231,18 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Time',
-    // children: [
-    //   {
-    //     label: 'Nosso time atual',
-    //     subLabel: 'Conheça nosso time de 2021.2',
-    //     href: '/members/actual',
-    //   },
-    //   {
-    //     label: 'Alumni',
-    //     subLabel: 'Conheça nossos ex-membros',
-    //     href: '#',
-    //   },
-    // ],
+    children: [
+      //   {
+      //     label: 'Nosso time atual',
+      //     subLabel: 'Conheça nosso time de 2021.2',
+      //     href: '/members/actual',
+      //   },
+      {
+        label: 'Alumni',
+        subLabel: 'Conheça nossos ex-membros',
+        href: '#/members/alumni',
+      },
+    ],
     href: '#/members/actual'
   },
   {
