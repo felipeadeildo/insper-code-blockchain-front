@@ -22,6 +22,7 @@ import Coins from '../assets/parceiros/coins.jfif'
 import Ambev from '../assets/parceiros/ambev.jfif'
 import Itau from '../assets/parceiros/itau.webp'
 import Ulrich from '../assets/parceiros/ulrich.jpg'
+import Dotz from '../assets/parceiros/dotz.png'
 
 const cards = [
   {
@@ -43,6 +44,11 @@ const cards = [
     name: "Itaú",
     image: Itau,
     link: "https://www.itau.com.br/",
+  },
+  {
+    name: "Dotz",
+    image: Dotz,
+    link: "https://www.dotz.com.br/",
   },
   {
     name: "GCB Investimentos",

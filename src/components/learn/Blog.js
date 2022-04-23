@@ -30,7 +30,7 @@ const BlogTags = (props) => {
 
 const ArticleList = () => {
   return (
-    <Container marginTop={10} maxW={'7xl'} p="12">
+    <Container maxW={'7xl'} p="12">
       <Heading as="h1">Aprenda na prática</Heading>
       <Box
         marginTop={{ base: '1', sm: '5' }}

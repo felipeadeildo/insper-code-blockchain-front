@@ -11,7 +11,7 @@ import {
 export default function CallToActionWithAnnotation() {
   return (
     <>
-      <Container maxW={'3xl'}>
+      <Container maxW={'3xl'} py={10}>
         <Stack
           as={Box}
           textAlign={'center'}
@@ -30,7 +30,7 @@ export default function CallToActionWithAnnotation() {
             A Blockchain Insper tem o prazer de apresentar o Curso de Introdução à Blockchain!
             Na linha de contribuir para o acesso à informação e o fomento do estudo das novas tecnologias,
             o curso é realizado no formato online, e é aberto para qualquer pessoa.
-            Os encontros são ministrados pelos membros da entidade, abordando desde contexto histórico até futuras
+            Os conteúdos foram escolhidos pelos membros da entidade, abordando desde contexto histórico até futuras
             perspectivas da tecnologia.
           </Text>
           <Stack

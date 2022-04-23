@@ -53,13 +53,8 @@ export default function SplitWithImage() {
                 iconBg={useColorModeValue('yellow.100', 'yellow.900')}
                 text={'Sobre'}
               />
-              <Text color={'gray.500'} fontSize={'m'}>
-                A Blockchain Insper tem o prazer de apresentar o Curso de Introdução à Blockchain!
-                Na linha de contribuir para o acesso à informação e o fomento do estudo das novas tecnologias,
-                o curso é realizado no formato online, e é aberto para toda qualquer pessoa.
-                Os encontros são ministrados pelos membros da entidade, abordando desde contexto histórico até futuras
-                perspectivas da tecnologia.Teremos também um website com uma vasta quantidade de conhecimento acerca
-                de blockchain para consulta ao longo do curso.
+              <Text color={'gray.500'} fontSize={'m'} marginTop={5}>
+                O maior experimento financeiro e sociológico do século XXI, o Bitcoin veio solucionar diversos problemas antes sem solução. O Curso Fundamental vai te dar base para entender o que está por trás da construção do protocolo e o que motivou Satoshi Nakamoto a desenvolvê-lo, entre muitas outras coisas que rondam essa tecnologia que está revolucionando a economia mundial.
               </Text>
             </Box>
             <Box>
@@ -68,14 +63,12 @@ export default function SplitWithImage() {
                 iconBg={useColorModeValue('green.100', 'green.900')}
                 text={'Objetivos'}
               />
-              <Text color={'gray.500'} fontSize={'m'}>
-                Muitas pessoas acham difícil entender blockchain e criptomoedas, é um produto da coordenação entre muitos
-                componentes complexos. Isso torna difícil ver a imagem completa até que todos os componentes individuais sejam
-                totalmente compreendidos. Além disso, como o campo é técnico e relativamente novo, a discussão relacionada à
-                tecnologia está cheia de jargões. Portanto, é fácil se perder tentando seguir quase qualquer conversa do ecossistema
-                se você não tiver um background mínimo sobre o tema. O objetivo deste curso é superar essa íngreme curva de
-                aprendizado da tecnologia blockchain. Ao final dele, você entenderá como uma blockchain e criptomoedas funcionam,
-                além das ideias, tecnologias e organizações que surgem a partir delas.
+              <Text color={'gray.500'} fontSize={'m'} marginTop={5}>
+
+                O curso está dividido em 7 módulos (Introdução, Bitcoin, Blockchain, Crypto Assets, Chains, Tecnologia e Regulação). Dentro desses módulos, há tópicos com textos ou vídeos explicando o assunto, existe mais de um link sobre o tema, caso já tenha entendido o conceito sinta-se à vontade para passar para o próximo tema.
+
+                O curso será disponibilizado nesse site de seguinte maneira: cada página é um módulo, dentro desses módulos existem subtemas que se relacionam com o assunto principal, e em seguida os links com os conteúdos.
+
               </Text>
             </Box>
           </Stack>
