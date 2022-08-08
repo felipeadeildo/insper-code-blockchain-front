@@ -1,28 +1,22 @@
-import {
-  Box,
-  Heading,
-  Text,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
+import { Box, Heading, Text, Wrap, WrapItem } from "@chakra-ui/react";
 
-import Card from '../components/parcerias/Card'
+import Card from "../components/parcerias/Card";
 
-import Insper from '../assets/parceiros/insper.png'
-import BeeTech from '../assets/parceiros/beetech.jpeg'
-import BlockchainBerkeley from '../assets/parceiros/blockchainberkeley.png'
-import BlockMaster from '../assets/parceiros/blockmaster.jpg'
-import ICOLab from '../assets/parceiros/icolab.png'
-import MarVentures from '../assets/parceiros/marventures.png'
-import MercadoBTC from '../assets/parceiros/mercadobtc.jpg'
-import PortaldoBTC from '../assets/parceiros/portaldobtc.webp'
-import GCB from '../assets/parceiros/gcb.jfif'
-import PeerBR from '../assets/parceiros/peer.png'
-import Coins from '../assets/parceiros/coins.jfif'
-import Ambev from '../assets/parceiros/ambev.jfif'
-import Itau from '../assets/parceiros/itau.webp'
-import Ulrich from '../assets/parceiros/ulrich.jpg'
-import Dotz from '../assets/parceiros/dotz.png'
+import Insper from "../assets/parceiros/insper.png";
+import BeeTech from "../assets/parceiros/beetech.jpeg";
+import BlockchainBerkeley from "../assets/parceiros/blockchainberkeley.png";
+import BlockMaster from "../assets/parceiros/blockmaster.jpg";
+import ICOLab from "../assets/parceiros/icolab.png";
+import MarVentures from "../assets/parceiros/marventures.png";
+import MercadoBTC from "../assets/parceiros/mercadobtc.jpg";
+import PortaldoBTC from "../assets/parceiros/portaldobtc.webp";
+import GCB from "../assets/parceiros/gcb.jfif";
+import PeerBR from "../assets/parceiros/peer.png";
+import Coins from "../assets/parceiros/coins.jfif";
+import Ambev from "../assets/parceiros/ambev.jfif";
+import Itau from "../assets/parceiros/itau.webp";
+import Ulrich from "../assets/parceiros/ulrich.jpg";
+import Dotz from "../assets/parceiros/dotz.png";
 
 const cards = [
   {
@@ -100,19 +94,17 @@ const cards = [
     image: PortaldoBTC,
     link: "https://portaldobitcoin.uol.com.br/",
   },
-
-]
+];
 
 export default function Parcerias() {
-
   return (
     <>
       <Box as="section">
         <Box
           maxW="2xl"
           mx="auto"
-          px={{ base: '6', lg: '8' }}
-          py={{ base: '16', sm: '20' }}
+          px={{ base: "6", lg: "8" }}
+          py={{ base: "16", sm: "20" }}
           textAlign="center"
         >
           <Heading size="3xl" fontWeight="extrabold" letterSpacing="tight">
@@ -125,11 +117,11 @@ export default function Parcerias() {
       </Box>
       <Wrap spacing="30px" justify="center" m={10}>
         {cards.map((card) => (
-          <WrapItem key={card.id}>
+          <WrapItem key={card.name}>
             <Card cardInfo={card} />
           </WrapItem>
         ))}
       </Wrap>
     </>
   );
-};
+}
