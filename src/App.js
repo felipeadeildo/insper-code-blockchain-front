@@ -17,7 +17,7 @@ import Areas from "./pages/Areas";
 import MembrosAtuais from "./pages/MembrosAtuais";
 import Fundo from "./pages/Fundo";
 import Projetos from "./pages/Projetos";
-import ProcessoSeletivo from "./pages/ProcessoSeletivo";
+// import ProcessoSeletivo from "./pages/ProcessoSeletivo";
 import MembrosAlumni from "./pages/MembrosAlumni";
 
 function App() {
@@ -57,7 +57,7 @@ function App() {
         <Route path="/members/alumni" exact element={<MembrosAlumni />} />
         <Route path="/fund" exact element={<Fundo />} />
         <Route path="/projects" exact element={<Projetos />} />
-        <Route path="/ps" exact element={<ProcessoSeletivo />} />
+        {/* <Route path="/ps" exact element={<ProcessoSeletivo />} /> */}
       </Routes>
       <Footer />
     </ChakraProvider>

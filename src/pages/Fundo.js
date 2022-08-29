@@ -48,15 +48,6 @@ const researches = [
       "https://www.infomoney.com.br/wp-content/uploads/2021/08/Solana-1024x683-1.png",
   },
   {
-    nome: "Terra",
-    tags: ["Research", "2022"],
-    texto:
-      "Luna (LUNA) e TerraUSD (UST) são dois tokens nativos da rede Terra, um projeto baseado em blockchain desenvolvido pela Terra Labs na Coreia do Sul",
-    link: "https://docs.google.com/document/d/1WgkHLv_8t_M6arHCEbfbm5p6NlSNMdds/edit?usp=sharing&ouid=116176718830297613713&rtpof=true&sd=true",
-    image:
-      "https://media.moneytimes.com.br/uploads/2021/12/terra-blockchain.jpg",
-  },
-  {
     nome: "Polygon",
     tags: ["Research", "2022"],
     texto:

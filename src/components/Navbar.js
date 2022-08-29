@@ -287,8 +287,8 @@ const NAV_ITEMS = [
     label: "Contato",
     href: "#/contact",
   },
-  {
-    label: "Processo Seletivo",
-    href: "#/ps",
-  },
+  // {
+  //   label: "Processo Seletivo",
+  //   href: "#/ps",
+  // },
 ];
