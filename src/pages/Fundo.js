@@ -318,7 +318,9 @@ function Fundo() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("https://bi-crypto-fund.herokuapp.com/");
+      const response = await axios.get(
+        "https://bi-crypto-fund.up.railway.app/"
+      );
       setData(response.data["fund_info"]["chart_data"]);
       setAccumulatedReturn(response.data["fund_info"]["cumulative_return"]);
       setAnnualizedReturn(response.data["fund_info"]["annualized_return"]);
