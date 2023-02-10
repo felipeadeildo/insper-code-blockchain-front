@@ -245,6 +245,10 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
+    label: "Processo Seletivo",
+    href: "#/ps",
+  },
+  {
     label: "Time",
     children: [
       //   {
@@ -286,9 +290,5 @@ const NAV_ITEMS = [
   {
     label: "Contato",
     href: "#/contact",
-  },
-  // {
-  //   label: "Processo Seletivo",
-  //   href: "#/ps",
-  // },
+  }
 ];

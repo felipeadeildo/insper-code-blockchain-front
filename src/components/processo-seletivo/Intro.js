@@ -14,7 +14,7 @@ import { SiDiscord } from "react-icons/si";
 
 const links = {
   discord: "https://discord.gg/jdK5yB48Mm",
-  forms: "https://forms.gle/G5hi9XYUxvcyh7yz9",
+  forms: "https://docs.google.com/forms/d/e/1FAIpQLScQyW4RGcwtcNAAVtYj3iFJdgJ4Khq07rSluQo5tWROKWYxow/viewform",
 };
 
 const Feature = ({ heading, text }) => {
@@ -88,25 +88,25 @@ export default function Intro() {
         <Feature
           heading={"Primeira Fase"}
           text={
-            "Preenchimento de um forms com detalhes pessoais e perguntas de caráter opinativo"
+            "Preenchimento de um Forms com detalhes pessoais e perguntas de caráter opinativo."
           }
         />
         <Feature
           heading={"Segunda Fase"}
           text={
-            "Estudos de caso em grupos e apresentação com perguntas de caráter técnico"
+            "Resolução de um case elaborado em parceria com o BTG e com a Mynt."
           }
         />
         <Feature
           heading={"Terceira Fase"}
           text={
-            "Entrevista individual para conhecer melhor o candidato com perguntas pessoais e possivelmente técnicas"
+            "Entrevista individual para conhecer melhor o candidato com perguntas pessoais e possivelmente técnicas."
           }
         />
         <Feature
-          heading={"Quarta Fase"}
+          heading={"Programa de Trainees"}
           text={
-            "Desempenho no Curso de Introdução à Blockchain e Projeto Interno Aplicado (nesta fase, os candidatos já ganham entre 5 e 10 horas do Insper)"
+            "Desempenho no Curso de Introdução à Blockchain e Projeto Interno Aplicado (nessa fase, os candidatos já ganham entre 5 e 10 horas complementares)."
           }
         />
       </Grid>

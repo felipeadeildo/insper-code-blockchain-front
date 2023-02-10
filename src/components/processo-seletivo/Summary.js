@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaBitcoin } from "react-icons/fa";
-import { RiTeamFill } from "react-icons/ri";
+// import { RiTeamFill } from "react-icons/ri";
 import { MdOutlineApartment } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
@@ -61,11 +61,11 @@ export default function Summary() {
           </Feature>
         </Link>
 
-        <Link href="#/members/actual">
+        {/* <Link href="#/members/actual">
           <Feature title="Time" icon={<RiTeamFill />}>
             Clique aqui para conhecer o time completo
           </Feature>
-        </Link>
+        </Link> */}
       </SimpleGrid>
     </Box>
   );
