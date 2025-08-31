@@ -18,7 +18,9 @@ export default function Layout() {
   return (
     <AuthProvider>
       <Navbar />
-      <Outlet />
+      <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+        <Outlet />
+      </main>
     </AuthProvider>
   )
 }

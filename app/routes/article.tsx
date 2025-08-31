@@ -3,6 +3,7 @@ import {
   ArrowLeft,
   Calendar,
   Clock,
+  Edit,
   Loader2,
   Share2,
   User,
@@ -11,6 +12,7 @@ import { Alert, AlertDescription } from '~/components/ui/alert'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent } from '~/components/ui/card'
+import { useAuth } from '~/hooks/use-auth'
 import { useArticle, useArticles } from '~/hooks/use-news'
 import { getCategoryLabel } from '~/services/news'
 import type { Route } from './+types/article'
@@ -27,6 +29,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Article({ params }: Route.ComponentProps) {
   const { data: article, isLoading, isError, error } = useArticle(params.id)
+  const { isAuthenticated } = useAuth()
 
   // Get related articles (same category, excluding current article)
   const { data: relatedData } = useArticles({
@@ -58,7 +61,7 @@ export default function Article({ params }: Route.ComponentProps) {
   if (isLoading) {
     return (
       <main className="min-h-screen pt-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 lg:py-12">
           <div className="flex items-center justify-center py-12">
             <Loader2 className="h-8 w-8 animate-spin" />
           </div>
@@ -70,7 +73,7 @@ export default function Article({ params }: Route.ComponentProps) {
   if (isError || !article) {
     return (
       <main className="min-h-screen pt-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 lg:py-12">
           <Alert variant="destructive">
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
@@ -93,23 +96,29 @@ export default function Article({ params }: Route.ComponentProps) {
 
   return (
     <main className="min-h-screen pt-16">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 lg:py-12">
         {/* Back Button */}
-        <Button variant="ghost" className="mb-8" asChild>
+        <Button
+          variant="ghost"
+          className="mb-8 hover:bg-primary/10 transition-colors"
+          asChild
+        >
           <a href="/noticias">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar para notícias
           </a>
         </Button>
 
-        <article className="max-w-4xl mx-auto">
+        <article className="max-w-5xl mx-auto">
           {/* Article Header */}
-          <header className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <Badge>{getCategoryLabel(article.category)}</Badge>
+          <header className="mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <Badge className="bg-primary/10 text-primary border-primary/20 text-sm px-3 py-1">
+                {getCategoryLabel(article.category)}
+              </Badge>
             </div>
 
-            <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text">
               {article.title}
             </h1>
 
@@ -129,15 +138,20 @@ export default function Article({ params }: Route.ComponentProps) {
                 </div>
               </div>
 
-              <Button
-                variant="outline"
-                size="sm"
-                className="sm:ml-auto"
-                onClick={handleShare}
-              >
-                <Share2 className="w-4 h-4 mr-2" />
-                Compartilhar
-              </Button>
+              <div className="flex gap-2 sm:ml-auto">
+                <Button variant="outline" size="sm" onClick={handleShare}>
+                  <Share2 className="w-4 h-4 mr-2" />
+                  Compartilhar
+                </Button>
+                {isAuthenticated && (
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={`/admin/article?id=${params.id}`}>
+                      <Edit className="w-4 h-4 mr-2" />
+                      Editar
+                    </a>
+                  </Button>
+                )}
+              </div>
             </div>
           </header>
 
@@ -199,36 +213,40 @@ export default function Article({ params }: Route.ComponentProps) {
 
         {/* Related Articles */}
         {relatedArticles.length > 0 && (
-          <section className="mt-16">
-            <h2 className="text-2xl font-bold mb-8 text-center">
+          <section className="mt-20">
+            <h2 className="text-3xl font-bold mb-12 text-center">
               Artigos relacionados
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {relatedArticles.map((relatedArticle) => (
                 <Card
                   key={relatedArticle.id}
-                  className="group hover:shadow-lg transition-all duration-300"
+                  className="group hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden border-0 bg-card/50 backdrop-blur-sm"
                 >
-                  <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+                  <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center relative overflow-hidden">
                     {relatedArticle.imageUrl ? (
                       <img
                         src={relatedArticle.imageUrl}
                         alt={relatedArticle.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (
                       <span className="text-muted-foreground text-sm">
                         Image
                       </span>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                      <a href={`/noticias/${relatedArticle.id}`}>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                      <a
+                        href={`/noticias/${relatedArticle.id}`}
+                        className="hover:underline decoration-primary/30 underline-offset-4"
+                      >
                         {relatedArticle.title}
                       </a>
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-3">
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">
                       {relatedArticle.excerpt}
                     </p>
                     <div className="text-xs text-muted-foreground">

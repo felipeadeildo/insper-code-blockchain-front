@@ -11,5 +11,6 @@ export default [
     route('noticias', 'routes/news.tsx'),
     route('noticias/:id', 'routes/article.tsx'),
     route('login', 'routes/login.tsx'),
+    route('admin/article', 'routes/admin.article.tsx'),
   ]),
 ] satisfies RouteConfig

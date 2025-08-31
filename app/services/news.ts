@@ -121,7 +121,7 @@ export const articleCategories: {
 }[] = [
   { value: 'market', label: 'Mercado' },
   { value: 'technology', label: 'Tecnologia' },
-  { value: 'event', label: 'eventos' },
+  { value: 'event', label: 'Eventos' },
   { value: 'regulation', label: 'Regulamentação' },
   { value: 'innovation', label: 'Inovação' },
   { value: 'analysis', label: 'Análises' },
