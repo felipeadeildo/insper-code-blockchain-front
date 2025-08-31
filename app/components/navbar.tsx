@@ -12,6 +12,7 @@ export function Navbar() {
     { name: 'Projetos', href: '#projetos' },
     { name: 'Fund', href: '#fundo' },
     { name: 'Research', href: '#research' },
+    { name: 'Notícias', href: '/noticias' },
     { name: 'Contato', href: '#contato' },
   ]
 
