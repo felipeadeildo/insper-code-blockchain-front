@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router'
 import { Navbar } from '~/components/navbar'
+import { AuthProvider } from '~/contexts/auth'
 import type { Route } from './+types/_layout'
 
 export function meta({}: Route.MetaArgs) {
@@ -15,9 +16,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Layout() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
       <Outlet />
-    </>
+    </AuthProvider>
   )
 }

@@ -1,10 +1,12 @@
-import { Blocks, Menu, X } from 'lucide-react'
+import { Blocks, Menu, X, LogOut, User } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
+import { useAuth } from '~/hooks/use-auth'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const { isAuthenticated, user, logout } = useAuth()
 
   const navItems = [
     { name: 'Sobre', href: '#sobre' },
@@ -70,9 +72,28 @@ export function Navbar() {
                   {item.name}
                 </a>
               ))}
-              <Button size="sm" asChild>
-                <a href="#contato">Junte-se a nós</a>
-              </Button>
+              
+              {isAuthenticated ? (
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <User className="w-4 h-4" />
+                    <span className="hidden lg:block">{user?.name || user?.email}</span>
+                  </div>
+                  <Button size="sm" variant="outline" onClick={logout}>
+                    <LogOut className="w-4 h-4 mr-1" />
+                    Sair
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <Button size="sm" variant="outline" asChild>
+                    <a href="/login">Login</a>
+                  </Button>
+                  <Button size="sm" asChild>
+                    <a href="#contato">Junte-se a nós</a>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
 
@@ -103,11 +124,40 @@ export function Navbar() {
                   {item.name}
                 </a>
               ))}
-              <Button size="sm" className="w-full mt-4" asChild>
-                <a href="#contato" onClick={() => setIsOpen(false)}>
-                  Junte-se a nós
-                </a>
-              </Button>
+              
+              {isAuthenticated ? (
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground">
+                    <User className="w-4 h-4" />
+                    <span>{user?.name || user?.email}</span>
+                  </div>
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => {
+                      logout()
+                      setIsOpen(false)
+                    }}
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sair
+                  </Button>
+                </div>
+              ) : (
+                <div className="mt-4 space-y-2">
+                  <Button size="sm" variant="outline" className="w-full" asChild>
+                    <a href="/login" onClick={() => setIsOpen(false)}>
+                      Login
+                    </a>
+                  </Button>
+                  <Button size="sm" className="w-full" asChild>
+                    <a href="#contato" onClick={() => setIsOpen(false)}>
+                      Junte-se a nós
+                    </a>
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         )}
