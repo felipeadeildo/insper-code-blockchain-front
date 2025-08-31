@@ -1,8 +1,20 @@
-import { ArrowRight, Calendar, Clock, User } from 'lucide-react'
+import {
+  AlertTriangle,
+  ArrowRight,
+  Calendar,
+  Clock,
+  Loader2,
+  User,
+} from 'lucide-react'
+import { useState } from 'react'
 import { Section, SectionHeader } from '~/components/section'
+import { Alert, AlertDescription } from '~/components/ui/alert'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
+import { useInfiniteArticles } from '~/hooks/use-news'
+import type { Article } from '~/services/news'
+import { getCategoryLabel } from '~/services/news'
 import type { Route } from './+types/news'
 
 export function meta({}: Route.MetaArgs) {
@@ -16,87 +28,56 @@ export function meta({}: Route.MetaArgs) {
   ]
 }
 
-// Mock data - later this will come from API
-const mockNews = [
-  {
-    id: '1',
-    title: 'Bitcoin atinge nova máxima histórica em 2024',
-    excerpt:
-      'O Bitcoin superou a marca de $70.000 pela primeira vez na história, impulsionado por maior adoção institucional e aprovação de ETFs.',
-    category: 'Market',
-    author: 'Equipe Finance',
-    publishedAt: '2024-03-15',
-    readTime: '3 min',
-    imageUrl: '/images/bitcoin-high.jpg',
-  },
-  {
-    id: '2',
-    title: 'Ethereum 2.0: O futuro das finanças descentralizadas',
-    excerpt:
-      'Análise completa sobre as melhorias do Ethereum 2.0 e seu impacto no ecossistema DeFi.',
-    category: 'Technology',
-    author: 'Equipe Tech',
-    publishedAt: '2024-03-10',
-    readTime: '5 min',
-    imageUrl: '/images/ethereum-2.jpg',
-  },
-  {
-    id: '3',
-    title: 'Workshop: Smart Contracts na Prática',
-    excerpt:
-      'Recap do nosso workshop sobre desenvolvimento de smart contracts com Solidity.',
-    category: 'Event',
-    author: 'Equipe Business',
-    publishedAt: '2024-03-05',
-    readTime: '4 min',
-    imageUrl: '/images/workshop-smart-contracts.jpg',
-  },
-  {
-    id: '4',
-    title: 'Regulamentação de Criptomoedas no Brasil',
-    excerpt:
-      'Entenda as novas regulamentações do Banco Central para exchanges e investidores de criptomoedas.',
-    category: 'Regulation',
-    author: 'Equipe Business',
-    publishedAt: '2024-02-28',
-    readTime: '6 min',
-    imageUrl: '/images/regulation-brazil.jpg',
-  },
-  {
-    id: '5',
-    title: 'NFTs além da Arte: Casos de Uso Reais',
-    excerpt:
-      'Exploramos aplicações práticas dos NFTs em setores como imobiliário, gaming e educação.',
-    category: 'Innovation',
-    author: 'Equipe Tech',
-    publishedAt: '2024-02-20',
-    readTime: '4 min',
-    imageUrl: '/images/nft-usecases.jpg',
-  },
-  {
-    id: '6',
-    title: 'DeFi vs Finanças Tradicionais: Comparativo',
-    excerpt:
-      'Análise detalhada das vantagens e desvantagens entre finanças descentralizadas e o sistema bancário tradicional.',
-    category: 'Analysis',
-    author: 'Equipe Finance',
-    publishedAt: '2024-02-15',
-    readTime: '7 min',
-    imageUrl: '/images/defi-vs-traditional.jpg',
-  },
-]
-
-const categories = [
-  { name: 'Todas', value: 'all' },
-  { name: 'Mercado', value: 'Market' },
-  { name: 'Tecnologia', value: 'Technology' },
-  { name: 'Eventos', value: 'Event' },
-  { name: 'Regulamentação', value: 'Regulation' },
-  { name: 'Inovação', value: 'Innovation' },
-  { name: 'Análises', value: 'Analysis' },
+const allCategories = [
+  { name: 'Todas', value: undefined },
+  { name: 'Mercado', value: 'market' as const },
+  { name: 'Tecnologia', value: 'technology' as const },
+  { name: 'Eventos', value: 'event' as const },
+  { name: 'Regulamentação', value: 'regulation' as const },
+  { name: 'Inovação', value: 'innovation' as const },
+  { name: 'Análises', value: 'analysis' as const },
 ]
 
 export default function News() {
+  const [selectedCategory, setSelectedCategory] = useState<
+    Article['category'] | undefined
+  >(undefined)
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteArticles({
+    category: selectedCategory,
+    status: 'published',
+    limit: 6,
+  })
+
+  // Flatten all pages into a single array
+  const articles = data?.pages.flatMap((page) => page.articles) || []
+  const featuredArticle = articles[0]
+  const otherArticles = articles.slice(1)
+
+  if (isError) {
+    return (
+      <main className="min-h-screen pt-16">
+        <Section>
+          <Alert variant="destructive">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertDescription>
+              Erro ao carregar as notícias:{' '}
+              {error?.message || 'Erro desconhecido'}
+            </AlertDescription>
+          </Alert>
+        </Section>
+      </main>
+    )
+  }
+
   return (
     <main className="min-h-screen pt-16">
       <Section>
@@ -108,109 +89,171 @@ export default function News() {
 
         {/* Categories Filter */}
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
-          {categories.map((category) => (
+          {allCategories.map((category) => (
             <Button
-              key={category.value}
-              variant={category.value === 'all' ? 'default' : 'outline'}
+              key={category.value || 'all'}
+              variant={
+                selectedCategory === category.value ? 'default' : 'outline'
+              }
               size="sm"
+              onClick={() => setSelectedCategory(category.value)}
             >
               {category.name}
             </Button>
           ))}
         </div>
 
-        {/* Featured Article */}
-        <Card className="mb-12 overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-0">
-            <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-              <span className="text-muted-foreground">Featured Image</span>
-            </div>
-            <CardContent className="p-8 flex flex-col justify-center">
-              <div className="flex items-center gap-2 mb-3">
-                <Badge variant="secondary">Destaque</Badge>
-                <Badge>{mockNews[0].category}</Badge>
-              </div>
-              <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-                {mockNews[0].title}
-              </h2>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                {mockNews[0].excerpt}
-              </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                <div className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  {mockNews[0].author}
-                </div>
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(mockNews[0].publishedAt).toLocaleDateString(
-                    'pt-BR'
-                  )}
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  {mockNews[0].readTime}
-                </div>
-              </div>
-              <Button asChild>
-                <a href={`/noticias/${mockNews[0].id}`}>
-                  Ler artigo completo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              </Button>
-            </CardContent>
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="h-8 w-8 animate-spin" />
           </div>
-        </Card>
-
-        {/* News Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mockNews.slice(1).map((article) => (
-            <Card
-              key={article.id}
-              className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
-            >
-              <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
-                <span className="text-muted-foreground text-sm">Image</span>
-              </div>
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="outline" className="text-xs">
-                    {article.category}
-                  </Badge>
-                </div>
-                <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
-                  <a href={`/noticias/${article.id}`}>{article.title}</a>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-0">
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {article.excerpt}
-                </p>
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <User className="w-3 h-3" />
-                    {article.author}
+        ) : (
+          <>
+            {/* Featured Article */}
+            {featuredArticle && (
+              <Card className="mb-12 overflow-hidden">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  <div className="aspect-video lg:aspect-auto bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                    {featuredArticle.imageUrl ? (
+                      <img
+                        src={featuredArticle.imageUrl}
+                        alt={featuredArticle.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-muted-foreground">
+                        Featured Image
+                      </span>
+                    )}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span>
-                      {new Date(article.publishedAt).toLocaleDateString(
-                        'pt-BR'
+                  <CardContent className="p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge variant="secondary">Destaque</Badge>
+                      <Badge>
+                        {getCategoryLabel(featuredArticle.category)}
+                      </Badge>
+                    </div>
+                    <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+                      {featuredArticle.title}
+                    </h2>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {featuredArticle.excerpt}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
+                      <div className="flex items-center gap-1">
+                        <User className="w-4 h-4" />
+                        {featuredArticle.author}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(
+                          featuredArticle.publishedAt
+                        ).toLocaleDateString('pt-BR')}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {featuredArticle.readTime}
+                      </div>
+                    </div>
+                    <Button asChild>
+                      <a href={`/noticias/${featuredArticle.id}`}>
+                        Ler artigo completo
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </div>
+              </Card>
+            )}
+
+            {/* Articles Grid */}
+            {otherArticles.length > 0 && (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {otherArticles.map((article) => (
+                  <Card
+                    key={article.id}
+                    className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+                      {article.imageUrl ? (
+                        <img
+                          src={article.imageUrl}
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-muted-foreground text-sm">
+                          Image
+                        </span>
                       )}
-                    </span>
-                    <span>•</span>
-                    <span>{article.readTime}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                    </div>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge variant="outline" className="text-xs">
+                          {getCategoryLabel(article.category)}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-lg leading-tight group-hover:text-primary transition-colors">
+                        <a href={`/noticias/${article.id}`}>{article.title}</a>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                        {article.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-xs text-muted-foreground">
+                        <div className="flex items-center gap-1">
+                          <User className="w-3 h-3" />
+                          {article.author}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span>
+                            {new Date(article.publishedAt).toLocaleDateString(
+                              'pt-BR'
+                            )}
+                          </span>
+                          <span>•</span>
+                          <span>{article.readTime}</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
 
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg">
-            Carregar mais notícias
-          </Button>
-        </div>
+            {/* Load More Button */}
+            {hasNextPage && (
+              <div className="text-center">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => fetchNextPage()}
+                  disabled={isFetchingNextPage}
+                >
+                  {isFetchingNextPage ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Carregando...
+                    </>
+                  ) : (
+                    'Carregar mais notícias'
+                  )}
+                </Button>
+              </div>
+            )}
+
+            {articles.length === 0 && !isLoading && (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground text-lg">
+                  {selectedCategory
+                    ? `Nenhuma notícia encontrada na categoria "${getCategoryLabel(selectedCategory)}"`
+                    : 'Nenhuma notícia encontrada'}
+                </p>
+              </div>
+            )}
+          </>
+        )}
       </Section>
     </main>
   )

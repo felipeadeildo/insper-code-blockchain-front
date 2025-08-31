@@ -1,72 +1,96 @@
-import { ArrowLeft, Calendar, Clock, Share2, User } from 'lucide-react'
+import {
+  AlertTriangle,
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Loader2,
+  Share2,
+  User,
+} from 'lucide-react'
+import { Alert, AlertDescription } from '~/components/ui/alert'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Card, CardContent } from '~/components/ui/card'
+import { useArticle, useArticles } from '~/hooks/use-news'
+import { getCategoryLabel } from '~/services/news'
 import type { Route } from './+types/article'
 
-export function meta({ params }: Route.MetaArgs) {
-  // In real app, this would fetch article data based on params.id
+export function meta({}: Route.MetaArgs) {
   return [
-    { title: 'Bitcoin atinge nova máxima histórica - Insper Blockchain' },
+    { title: 'Artigo - Insper Blockchain' },
     {
       name: 'description',
-      content:
-        'O Bitcoin superou a marca de $70.000 pela primeira vez na história, impulsionado por maior adoção institucional.',
+      content: 'Leia o artigo completo sobre blockchain e criptomoedas.',
     },
   ]
 }
 
-// Mock article data - later this will come from API based on params.id
-const mockArticle = {
-  id: '1',
-  title: 'Bitcoin atinge nova máxima histórica em 2024',
-  content: `
-    <p>O Bitcoin (BTC) alcançou um novo recorde histórico nesta semana, superando a marca dos $70.000 pela primeira vez desde seu lançamento em 2009. Esse marco representa não apenas um momento significativo para a criptomoeda líder, mas também um reflexo da crescente maturidade do mercado de ativos digitais.</p>
+export default function Article({ params }: Route.ComponentProps) {
+  const { data: article, isLoading, isError, error } = useArticle(params.id)
 
-    <h2>Fatores que impulsionaram a alta</h2>
-    
-    <p>Diversos fatores contribuíram para essa valorização excepcional:</p>
-    
-    <ul>
-      <li><strong>Aprovação de ETFs de Bitcoin:</strong> A aprovação de fundos negociados em bolsa (ETFs) de Bitcoin pela SEC americana facilitou o acesso de investidores institucionais ao mercado.</li>
-      <li><strong>Adoção institucional:</strong> Grandes corporações como Tesla, MicroStrategy e Square continuam a adicionar Bitcoin aos seus balanços patrimoniais.</li>
-      <li><strong>Inflação global:</strong> O Bitcoin tem sido visto como uma reserva de valor alternativa em meio às preocupações inflacionárias globais.</li>
-      <li><strong>Regulamentação mais clara:</strong> Marcos regulatórios mais definidos em várias jurisdições têm aumentado a confiança dos investidores.</li>
-    </ul>
+  // Get related articles (same category, excluding current article)
+  const { data: relatedData } = useArticles({
+    category: article?.category,
+    status: 'published',
+    limit: 3,
+  })
 
-    <h2>Análise técnica</h2>
-    
-    <p>Do ponto de vista técnico, o Bitcoin quebrou importantes níveis de resistência, com volume significativo apoiando o movimento. Os indicadores sugerem que ainda há espaço para valorização, embora correções sejam naturais em qualquer ativo.</p>
+  const relatedArticles =
+    relatedData?.articles.filter((a) => a.id !== params.id).slice(0, 3) || []
 
-    <blockquote>
-      "Esta valorização do Bitcoin representa um amadurecimento do mercado de criptomoedas e uma validação da tecnologia blockchain como um todo." - Equipe de Análise Insper Blockchain
-    </blockquote>
+  const handleShare = async () => {
+    if (navigator.share && article) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: article.excerpt,
+          url: window.location.href,
+        })
+      } catch (err) {
+        console.log('Error sharing:', err)
+      }
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(window.location.href)
+    }
+  }
 
-    <h2>Impacto no mercado</h2>
-    
-    <p>A alta do Bitcoin teve efeitos positivos em todo o ecossistema de criptomoedas, com altcoins também registrando valorizações significativas. O mercado total de criptomoedas ultrapassou os $2.5 trilhões em capitalização.</p>
+  if (isLoading) {
+    return (
+      <main className="min-h-screen pt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="h-8 w-8 animate-spin" />
+          </div>
+        </div>
+      </main>
+    )
+  }
 
-    <h2>Perspectivas futuras</h2>
-    
-    <p>Os analistas permanecem otimistas sobre o potencial de longo prazo do Bitcoin, especialmente considerando:</p>
-    
-    <ul>
-      <li>O halving programado para 2024</li>
-      <li>Crescimento contínuo da adoção institucional</li>
-      <li>Desenvolvimento de soluções de segunda camada como a Lightning Network</li>
-      <li>Maior integração com o sistema financeiro tradicional</li>
-    </ul>
+  if (isError || !article) {
+    return (
+      <main className="min-h-screen pt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <Alert variant="destructive">
+            <AlertTriangle className="h-4 w-4" />
+            <AlertDescription>
+              {error?.message || 'Artigo não encontrado'}
+            </AlertDescription>
+          </Alert>
 
-    <p>No entanto, é importante lembrar que o mercado de criptomoedas permanece volátil e os investidores devem sempre fazer suas próprias pesquisas e considerar seus perfis de risco antes de investir.</p>
-  `,
-  category: 'Market',
-  author: 'Equipe Finance',
-  publishedAt: '2024-03-15',
-  readTime: '3 min',
-  imageUrl: '/images/bitcoin-high.jpg',
-}
+          <div className="mt-8">
+            <Button variant="ghost" asChild>
+              <a href="/noticias">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Voltar para notícias
+              </a>
+            </Button>
+          </div>
+        </div>
+      </main>
+    )
+  }
 
-export default function Article() {
   return (
     <main className="min-h-screen pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -82,32 +106,35 @@ export default function Article() {
           {/* Article Header */}
           <header className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <Badge>{mockArticle.category}</Badge>
+              <Badge>{getCategoryLabel(article.category)}</Badge>
             </div>
 
             <h1 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-              {mockArticle.title}
+              {article.title}
             </h1>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-muted-foreground mb-8">
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1">
                   <User className="w-4 h-4" />
-                  {mockArticle.author}
+                  {article.author}
                 </div>
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  {new Date(mockArticle.publishedAt).toLocaleDateString(
-                    'pt-BR'
-                  )}
+                  {new Date(article.publishedAt).toLocaleDateString('pt-BR')}
                 </div>
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
-                  {mockArticle.readTime}
+                  {article.readTime}
                 </div>
               </div>
 
-              <Button variant="outline" size="sm" className="sm:ml-auto">
+              <Button
+                variant="outline"
+                size="sm"
+                className="sm:ml-auto"
+                onClick={handleShare}
+              >
                 <Share2 className="w-4 h-4 mr-2" />
                 Compartilhar
               </Button>
@@ -115,15 +142,41 @@ export default function Article() {
           </header>
 
           {/* Featured Image */}
-          <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg mb-8 flex items-center justify-center">
-            <span className="text-muted-foreground">Featured Image</span>
-          </div>
+          {article.imageUrl ? (
+            <div className="aspect-video rounded-lg mb-8 overflow-hidden">
+              <img
+                src={article.imageUrl}
+                alt={article.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg mb-8 flex items-center justify-center">
+              <span className="text-muted-foreground">Featured Image</span>
+            </div>
+          )}
 
           {/* Article Content */}
           <div
             className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-blockquote:border-l-primary prose-blockquote:text-foreground"
-            dangerouslySetInnerHTML={{ __html: mockArticle.content }}
+            dangerouslySetInnerHTML={{ __html: article.content }}
           />
+
+          {/* Tags */}
+          {article.tags && article.tags.length > 0 && (
+            <div className="mt-8 pt-8 border-t">
+              <div className="flex flex-wrap gap-2">
+                <span className="text-sm text-muted-foreground mr-2">
+                  Tags:
+                </span>
+                {article.tags.map((tag, index) => (
+                  <Badge key={index} variant="secondary" className="text-xs">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Article Footer */}
           <footer className="mt-12 pt-8 border-t">
@@ -132,7 +185,9 @@ export default function Article() {
                 <span className="text-sm text-muted-foreground">
                   Gostou do artigo?
                 </span>
-                <Button size="sm">Compartilhar</Button>
+                <Button size="sm" onClick={handleShare}>
+                  Compartilhar
+                </Button>
               </div>
 
               <Button variant="outline" asChild>
@@ -143,37 +198,53 @@ export default function Article() {
         </article>
 
         {/* Related Articles */}
-        <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            Artigos relacionados
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[1, 2, 3].map((i) => (
-              <Card
-                key={i}
-                className="group hover:shadow-lg transition-all duration-300"
-              >
-                <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
-                  <span className="text-muted-foreground text-sm">Image</span>
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                    <a href={`/noticias/${i + 1}`}>
-                      Título do artigo relacionado {i}
-                    </a>
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Breve descrição do artigo relacionado que desperta o
-                    interesse do leitor.
-                  </p>
-                  <div className="text-xs text-muted-foreground">
-                    <span>Há 2 dias</span> • <span>4 min</span>
+        {relatedArticles.length > 0 && (
+          <section className="mt-16">
+            <h2 className="text-2xl font-bold mb-8 text-center">
+              Artigos relacionados
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {relatedArticles.map((relatedArticle) => (
+                <Card
+                  key={relatedArticle.id}
+                  className="group hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="aspect-video bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+                    {relatedArticle.imageUrl ? (
+                      <img
+                        src={relatedArticle.imageUrl}
+                        alt={relatedArticle.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-muted-foreground text-sm">
+                        Image
+                      </span>
+                    )}
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                      <a href={`/noticias/${relatedArticle.id}`}>
+                        {relatedArticle.title}
+                      </a>
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      {relatedArticle.excerpt}
+                    </p>
+                    <div className="text-xs text-muted-foreground">
+                      <span>
+                        {new Date(
+                          relatedArticle.publishedAt
+                        ).toLocaleDateString('pt-BR')}
+                      </span>{' '}
+                      • <span>{relatedArticle.readTime}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   )
