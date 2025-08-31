@@ -3,6 +3,7 @@ import { Areas } from '~/components/areas'
 import { Contact } from '~/components/contact'
 import { Fund } from '~/components/fund'
 import { Hero } from '~/components/hero'
+import { Navbar } from '~/components/navbar'
 import { Partners } from '~/components/partners'
 import { Projects } from '~/components/projects'
 import { Research } from '~/components/research'
@@ -27,16 +28,19 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <About />
-      <Areas />
-      <Projects />
-      <Testimonials />
-      <Fund />
-      <Research />
-      <Partners />
-      <Contact />
-    </main>
+    <>
+      <Navbar />
+      <main className="min-h-screen" id="top">
+        <Hero />
+        <About />
+        <Areas />
+        <Projects />
+        <Testimonials />
+        <Fund />
+        <Research />
+        <Partners />
+        <Contact />
+      </main>
+    </>
   )
 }

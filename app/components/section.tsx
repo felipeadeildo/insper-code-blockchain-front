@@ -15,7 +15,7 @@ export function Section({
   containerClassName,
 }: SectionProps) {
   return (
-    <section id={id} className={cn('py-16 lg:py-24', className)}>
+    <section id={id} className={cn('py-12 lg:py-16', className)}>
       <div
         className={cn(
           'container mx-auto px-4 sm:px-6 lg:px-8',
@@ -44,17 +44,17 @@ export function SectionHeader({
   className,
 }: SectionHeaderProps) {
   return (
-    <div className={cn('mb-12 lg:mb-16', centered && 'text-center', className)}>
+    <div className={cn('mb-8 lg:mb-12', centered && 'text-center', className)}>
       {subtitle && (
-        <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-2">
+        <p className="text-xs lg:text-sm font-semibold uppercase tracking-wider text-primary mb-2">
           {subtitle}
         </p>
       )}
-      <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+      <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
         {title}
       </h2>
       {description && (
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+        <p className="text-base lg:text-lg text-muted-foreground max-w-2xl mx-auto">
           {description}
         </p>
       )}

@@ -1,25 +1,25 @@
-import { Briefcase, Code, Play, TrendingUp } from 'lucide-react'
+import { Building2, LineChart, Play, Terminal } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card'
 import { Section, SectionHeader } from './section'
 
 export function Areas() {
   const areas = [
     {
-      icon: Briefcase,
+      icon: Building2,
       title: 'Business',
       description:
         'Estudo das aplicações da tecnologia blockchain, atuações nas diversas áreas e empresas e elaboração de possíveis casos reais.',
       color: 'from-blue-500 to-cyan-500',
     },
     {
-      icon: TrendingUp,
+      icon: LineChart,
       title: 'Finance',
       description:
         'Estudo do mercado de criptoativos, tecnologia blockchain no mercado financeiro e elaboração de estratégias de investimento.',
       color: 'from-green-500 to-emerald-500',
     },
     {
-      icon: Code,
+      icon: Terminal,
       title: 'Tech',
       description:
         'Estudo da tecnologia blockchain na parte técnica, smart contracts, dApps, desenvolvimento de software e criptografia.',
@@ -35,22 +35,22 @@ export function Areas() {
         description="Estamos estruturados em áreas de estudo especializadas, cada uma focada em diferentes aspectos da tecnologia blockchain."
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {areas.map((area, index) => (
           <Card
             key={index}
             className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20"
           >
-            <CardHeader className="text-center pb-4">
+            <CardHeader className="text-center pb-3">
               <div
-                className={`w-16 h-16 rounded-full bg-gradient-to-r ${area.color} p-4 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                className={`w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-r ${area.color} p-3 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300`}
               >
                 <area.icon className="w-full h-full text-white" />
               </div>
-              <CardTitle className="text-2xl">{area.title}</CardTitle>
+              <CardTitle className="text-xl lg:text-2xl">{area.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center leading-relaxed">
+              <p className="text-muted-foreground text-center leading-relaxed text-sm">
                 {area.description}
               </p>
             </CardContent>
