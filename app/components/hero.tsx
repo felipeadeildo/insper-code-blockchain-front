@@ -2,11 +2,6 @@ import { ArrowRight, ChevronDown, Lightbulb, Target, Users } from 'lucide-react'
 import { Button } from '~/components/ui/button'
 
 export function Hero() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary/20 to-primary/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
@@ -30,20 +25,14 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center mb-8 lg:mb-12">
-            <Button
-              size="lg"
-              className="group"
-              onClick={() => scrollToSection('contato')}
-            >
-              Junte-se a nós
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="group" asChild>
+              <a href="#contato">
+                Junte-se a nós
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollToSection('projetos')}
-            >
-              Conheça nossos projetos
+            <Button size="lg" variant="outline" asChild>
+              <a href="#projetos">Conheça nossos projetos</a>
             </Button>
           </div>
 
@@ -88,13 +77,13 @@ export function Hero() {
         </div>
       </div>
 
-      <button
-        onClick={() => scrollToSection('sobre')}
+      <a
+        href="#sobre"
         className="absolute bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2 text-primary hover:text-primary/80 transition-colors z-20 hidden md:block"
         aria-label="Scroll para próxima seção"
       >
         <ChevronDown className="w-6 h-6 animate-bounce" />
-      </button>
+      </a>
     </section>
   )
 }
