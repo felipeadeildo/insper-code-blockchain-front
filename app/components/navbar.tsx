@@ -1,4 +1,4 @@
-import { Blocks, Menu, X, LogOut, User } from 'lucide-react'
+import { Blocks, LogOut, Menu, User, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { useAuth } from '~/hooks/use-auth'
@@ -9,13 +9,13 @@ export function Navbar() {
   const { isAuthenticated, user, logout } = useAuth()
 
   const navItems = [
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Áreas', href: '#areas' },
-    { name: 'Projetos', href: '#projetos' },
-    { name: 'Fund', href: '#fundo' },
-    { name: 'Research', href: '#research' },
+    { name: 'Sobre', href: '/#sobre' },
+    { name: 'Áreas', href: '/#areas' },
+    { name: 'Projetos', href: '/#projetos' },
+    { name: 'Fund', href: '/#fundo' },
+    { name: 'Research', href: '/#research' },
     { name: 'Notícias', href: '/noticias' },
-    { name: 'Contato', href: '#contato' },
+    { name: 'Contato', href: '/#contato' },
   ]
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function Navbar() {
         }
         return false
       })
-      setActiveSection(currentSection ? `#${currentSection}` : '')
+      setActiveSection(currentSection ? `/#${currentSection}` : '')
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -72,12 +72,14 @@ export function Navbar() {
                   {item.name}
                 </a>
               ))}
-              
+
               {isAuthenticated ? (
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
                     <User className="w-4 h-4" />
-                    <span className="hidden lg:block">{user?.name || user?.email}</span>
+                    <span className="hidden lg:block">
+                      {user?.name || user?.email}
+                    </span>
                   </div>
                   <Button size="sm" variant="outline" onClick={logout}>
                     <LogOut className="w-4 h-4 mr-1" />
@@ -90,7 +92,7 @@ export function Navbar() {
                     <a href="/login">Login</a>
                   </Button>
                   <Button size="sm" asChild>
-                    <a href="#contato">Junte-se a nós</a>
+                    <a href="/#contato">Junte-se a nós</a>
                   </Button>
                 </div>
               )}
@@ -124,16 +126,16 @@ export function Navbar() {
                   {item.name}
                 </a>
               ))}
-              
+
               {isAuthenticated ? (
                 <div className="mt-4 space-y-2">
                   <div className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground">
                     <User className="w-4 h-4" />
                     <span>{user?.name || user?.email}</span>
                   </div>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
+                  <Button
+                    size="sm"
+                    variant="outline"
                     className="w-full"
                     onClick={() => {
                       logout()
@@ -146,13 +148,18 @@ export function Navbar() {
                 </div>
               ) : (
                 <div className="mt-4 space-y-2">
-                  <Button size="sm" variant="outline" className="w-full" asChild>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="w-full"
+                    asChild
+                  >
                     <a href="/login" onClick={() => setIsOpen(false)}>
                       Login
                     </a>
                   </Button>
                   <Button size="sm" className="w-full" asChild>
-                    <a href="#contato" onClick={() => setIsOpen(false)}>
+                    <a href="/#contato" onClick={() => setIsOpen(false)}>
                       Junte-se a nós
                     </a>
                   </Button>
