@@ -7,8 +7,8 @@ export function Hero() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-4 lg:mb-6">
-            <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-2 rounded-full text-xs lg:text-sm font-medium">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+            <span className="inline-flex items-center gap-2 px-3 py-2 text-xs lg:text-sm font-medium">
+              <span className="w-1.5 h-1.5 animate-pulse" />
               Primeira organização estudantil de blockchain da América Latina
             </span>
           </div>
